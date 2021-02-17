@@ -240,6 +240,12 @@ static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES
    vao[4], ///add one more object
 ```
 
+* Add Model instance definition
+
+```C++
+static Model Track("track.obj");
+```
+
 * Generate more VAO in setup function
 
 ```C++
