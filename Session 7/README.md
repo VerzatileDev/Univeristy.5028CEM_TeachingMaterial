@@ -223,6 +223,64 @@ void Skybox::InitialiseSkybox(unsigned int vao, unsigned int vbo)
 }
 ```
 
+Change InitialiseSkybox definition and implementation.
+
+```C++
+void InitialiseCubeMap(unsigned int programId, unsigned int textureID);
+```
+
+```C++
+void Skybox::InitialiseCubeMap(unsigned int programId, unsigned int textureID)
+{
+	std::string skyboxTextures[] =
+	{
+		"Textures/SkyboxRight.jpg",
+		"Textures/SkyboxLeft.jpg",
+		"Textures/SkyboxTop.jpg",
+		"Textures/SkyboxBottom.jpg",
+		"Textures/SkyboxFront.jpg",
+		"Textures/SkyboxBack.jpg"
+	};
+
+	glActiveTexture(GL_TEXTURE0 + textureID-1);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+	int width, height;
+	for (unsigned int i = 0; i < 6; i++)
+	{
+		unsigned char* data = SOIL_load_image(skyboxTextures[i].c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
+		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		SOIL_free_image_data(data);
+	}
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	unsigned int skyTexLoc = glGetUniformLocation(programId, "skyboxTexture");
+	glUniform1i(skyTexLoc, textureID-1); //send texture to shader
+}
+```
+
+Change Draw definition and implementation.
+
+```C++
+void Draw(unsigned int programId);
+```
+
+```C++
+void Skybox::Draw(unsigned int programId)
+{
+	glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
+	glBindVertexArray(skyboxVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glBindVertexArray(0);
+	glDepthFunc(GL_LESS); // set depth function back to default
+}
+```
+
 ## Look around camera
 
 In this section, you will learn how to Add a camera which can be controlled by key pressing to look around the scene.
