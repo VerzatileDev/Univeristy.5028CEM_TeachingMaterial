@@ -298,7 +298,7 @@ Delete rest of functions inside Skybox class.
 
 ### Step two: Merge shader codes
 
-For vertex shader. First define SKYBOX object and add import and output data. additional codes 
+For vertex shader, first define SKYBOX object and add import and output data. additional codes 
 
 ```C++
 #define SKYBOX 2
@@ -319,6 +319,23 @@ Add coordinate codes
     }
 ```
 
+For Fragment shader, first define SKYBOX object and add import data. additional codes 
+
+```C++
+#define SKYBOX 2
+
+in vec3 SkytexCoordsExport;
+
+uniform samplerCube skyboxTexture;
+```
+
+Finally, color calculation codes.
+
+```C++
+    if (object == SKYBOX) {
+    colorsOut = texture(skyboxTexture, SkytexCoordsExport);
+    }
+```
 
 ## Look around camera
 
