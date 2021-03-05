@@ -342,6 +342,12 @@ Finally, color calculation codes.
 Make sure, you increase the size of your both VAO and VBO to accommodate Skybox.
 Also, increase the size texture id array and increase number in glGenTextures(3, texture); 
 
+Make your viewing frustum is big enough to accommodate the Skybox. So, place your project matrix defintion with
+ 
+```C++
+   projMat = perspective(radians(60.0), 1.0, 0.1, 1000.0);
+```
+
 Replace skybox initialization codes in setup function wth
 
 ```C++
