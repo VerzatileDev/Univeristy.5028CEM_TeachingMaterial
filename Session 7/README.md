@@ -141,6 +141,13 @@ The Skybox can not directly into your project (not just a copy-paste job!). The 
 There are two ways you can make the skybox working in your project. One is convert your model class (or any other drawing classes) into stand-alone shader architecture.
 This requires some advanced programming skills which deeply understand the modern OpenGL drawing pipelines
 
+The relative easy way to emerge skybox shader codes with your existing shader codes and also modify the skybox class.
+Here is some instructments for how to integrate skybox into your project. Of course, they will not solve every problem you are facing.
+However they will provide you a good starting point.
+
+### Step one: Modify Skybox class  
+
+
 ## Look around camera
 
 In this section, you will learn how to Add a camera which can be controlled by key pressing to look around the scene.
