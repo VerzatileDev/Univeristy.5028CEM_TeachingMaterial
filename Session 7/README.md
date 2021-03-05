@@ -281,9 +281,49 @@ void Skybox::Draw(unsigned int programId)
 }
 ```
 
+Change SetViewMatrix definition and implementation.
+
+```C++
+void SetViewMatrix(unsigned int modelViewMatLoc, glm::mat4 modelViewMat);
+```
+
+```C++
+void Skybox::SetViewMatrix(unsigned int modelViewMatLoc, glm::mat4 modelViewMat)
+{
+	glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));
+}
+```
+
+Delete rest of functions inside Skybox class.
+
+### Step two: Merge shader codes
+
+For vertex shader. First define SKYBOX object and add import and output data. additional codes 
+
+```C++
+#define SKYBOX 2
+
+layout(location=0) in vec3 skyCoords;
+
+out vec3 SkytexCoordsExport;
+```
+
+Please not vec3 SkytexCoordsExport is the texture coordinates for Skybox (it is vec3 not vec2)
+
+Add coordinate codes
+```C++
+    if (object == SKYBOX)
+    {
+        SkytexCoordsExport = skyCoords;
+        coords = vec4(skyCoords, 1.0);
+    }
+```
+
+
 ## Look around camera
 
 In this section, you will learn how to Add a camera which can be controlled by key pressing to look around the scene.
+
 
 
 ### Basic theory. 
