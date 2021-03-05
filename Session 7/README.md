@@ -2,8 +2,9 @@
 
 #### Table of Contents
 1. [Skybox](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Skybox)
-2. [Look around camera](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Look-around-camera)
-3. [Your own project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Your-own-project)
+2. [Integrate into your project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Integrate-into-your-project)
+3. [Look around camera](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Look-around-camera)
+4. [Your own project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Your-own-project)
 
 Welcome to Week 7! 
 
@@ -170,6 +171,11 @@ skybox.Draw();
 
 * Also, you need to be careful with textureID in Skybox class, which gives you the information which textureID has been used.
 So, you should use skybox texture as the first textureID and add your other textures after it.
+
+## Integrate into your project
+
+The Skybox 
+
 
 ## Look around camera
 
