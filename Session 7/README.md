@@ -174,7 +174,8 @@ So, you should use skybox texture as the first textureID and add your other text
 
 ## Integrate into your project
 
-The Skybox 
+This is an optional task.
+The Skybox can not directly into your project (not just copy paste job!). The Skybox example project uses a stand-alone shader architecture.
 
 
 ## Look around camera
