@@ -146,6 +146,9 @@ Here is some instructments for how to integrate skybox into your project. Of cou
 However they will provide you a good starting point.
 
 ### Step one: Modify Skybox class  
+Remove CreateShader function inside Skybox class. You have to remove both CreateShader defintion in header file and remove
+implementation in cpp file. We are going to merge the skybox shader codes with main shaders.
+
 
 
 ## Look around camera
