@@ -136,8 +136,10 @@ void Skybox::Draw()
 ## Integrate into your project
 
 This is an optional task.
-The Skybox can not directly into your project (not just copy paste job!). The Skybox example project uses a stand-alone shader architecture.
+The Skybox can not directly into your project (not just a copy-paste job!). The Skybox example project uses a stand-alone shader architecture.
 
+There are two ways you can make the skybox working in your project. One is convert your model class (or any other drawing classes) into stand-alone shader architecture.
+This requires some advanced programming skills which deeply understand the modern OpenGL drawing pipelines
 
 ## Look around camera
 
