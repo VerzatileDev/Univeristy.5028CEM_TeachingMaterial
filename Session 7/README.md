@@ -142,14 +142,23 @@ There are two ways you can make the skybox working in your project. One is conve
 This requires some advanced programming skills which deeply understand the modern OpenGL drawing pipelines
 
 The relative easy way to emerge skybox shader codes with your existing shader codes and also modify the skybox class.
-Here is some instructments for how to integrate skybox into your project. Of course, they will not solve every problem you are facing.
+Here is some instructions for how to integrate skybox into your project. Of course, they will not solve every problem you are facing.
 However they will provide you a good starting point.
 
 ### Step one: Modify Skybox class  
 Remove CreateShader function inside Skybox class. You have to remove both CreateShader defintion in header file and remove
 implementation in cpp file. We are going to merge the skybox shader codes with main shaders.
 
+Remove variables definition. We only need VAO and VBO. so, only variables left are
 
+```C++
+private:
+	unsigned int skyboxVAO,	skyboxVBO;
+```
+
+Do rememeber to delete related codes inside Skybox class.
+
+Change 
 
 ## Look around camera
 
