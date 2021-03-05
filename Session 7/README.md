@@ -370,7 +370,7 @@ If you have done all changes, you should be able to add Skybox into the scene.
 There is a completed example project with model class added. The project (SkyModelEx.zip) can be downloaed in this folder.
 The example of output is shown below.
 
-![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%207/Readme%20Pictures/SkyScreenshot.JPG)
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%207/Readme%20Pictures/SkyModelScreenshot.JPG)
 
 ## Look around camera
 
