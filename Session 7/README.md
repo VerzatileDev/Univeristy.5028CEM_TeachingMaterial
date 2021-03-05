@@ -337,6 +337,41 @@ Finally, color calculation codes.
     }
 ```
 
+### Step three: Add codes into your game engine or main.
+
+Make sure, you increase the size of your both VAO and VBO to accommodate Skybox.
+Also, increase the size texture id array and increase number in glGenTextures(3, texture); 
+
+Replace skybox initialization codes in setup function wth
+
+```C++
+   glGenBuffers(1, &buffer[SKYBOX_VERTICES]);
+   skybox.InitialiseSkybox(vao[SKYBOX], buffer[SKYBOX_VERTICES]);
+   skybox.InitialiseCubeMap(programId, texture[3]);
+```
+
+The exact index number for texture[3] should be adjusted according to your project.
+
+In draw function, please place skybox drawing codes right after modelview matrix codes. For example,
+
+ ```C++
+   // Calculate and update modelview matrix.
+   modelViewMat = mat4(1.0);
+   modelViewMat = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0 + d, 10.0, 0.0), vec3(0.0, 1.0, 0.0));
+   glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat)); 
+
+   //Draw SkyBox
+   glUniform1ui(objectLoc, SKYBOX);  //if (object == SKYBOX)
+   skybox.SetViewMatrix(modelViewMatLoc, modelViewMat);
+   skybox.Draw(programId);
+```
+
+If you have done all changes, you should be able to add Skybox into the scene. 
+There is a completed example project with model class added. The project (SkyModelEx.zip) can be downloaed in this folder.
+The example of output is shown below.
+
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%207/Readme%20Pictures/SkyScreenshot.JPG)
+
 ## Look around camera
 
 In this section, you will learn how to Add a camera which can be controlled by key pressing to look around the scene.
