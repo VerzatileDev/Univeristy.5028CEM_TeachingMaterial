@@ -158,7 +158,70 @@ private:
 
 Do rememeber to delete related codes inside Skybox class.
 
-Change 
+Change InitialiseSkybox definition and implementation. The function takes VAO and VBO from the gameEngine or main.
+
+```C++
+void InitialiseSkybox(unsigned int vao, unsigned int vbo);
+```
+
+The implementation.
+
+```C++
+void Skybox::InitialiseSkybox(unsigned int vao, unsigned int vbo)
+{
+	float skyboxVertices[] =
+	{
+		-300.0f,  300.0f, -300.0f,
+		-300.0f, -300.0f, -300.0f,
+		 300.0f, -300.0f, -300.0f,
+		 300.0f, -300.0f, -300.0f,
+		 300.0f,  300.0f, -300.0f,
+		-300.0f,  300.0f, -300.0f,
+
+		-300.0f, -300.0f,  300.0f,
+		-300.0f, -300.0f, -300.0f,
+		-300.0f,  300.0f, -300.0f,
+		-300.0f,  300.0f, -300.0f,
+		-300.0f,  300.0f,  300.0f,
+		-300.0f, -300.0f,  300.0f,
+
+		 300.0f, -300.0f, -300.0f,
+		 300.0f, -300.0f,  300.0f,
+		 300.0f,  300.0f,  300.0f,
+		 300.0f,  300.0f,  300.0f,
+		 300.0f,  300.0f, -300.0f,
+		 300.0f, -300.0f, -300.0f,
+
+		-300.0f, -300.0f,  300.0f,
+		-300.0f,  300.0f,  300.0f,
+		 300.0f,  300.0f,  300.0f,
+		 300.0f,  300.0f,  300.0f,
+		 300.0f, -300.0f,  300.0f,
+		-300.0f, -300.0f,  300.0f,
+
+		-300.0f,  300.0f, -300.0f,
+		 300.0f,  300.0f, -300.0f,
+		 300.0f,  300.0f,  300.0f,
+		 300.0f,  300.0f,  300.0f,
+		-300.0f,  300.0f,  300.0f,
+		-300.0f,  300.0f, -300.0f,
+
+		-300.0f, -300.0f, -300.0f,
+		-300.0f, -300.0f,  300.0f,
+		 300.0f, -300.0f, -300.0f,
+		 300.0f, -300.0f, -300.0f,
+		-300.0f, -300.0f,  300.0f,
+		 300.0f, -300.0f,  300.0f
+	};
+	skyboxVAO = vao;
+	skyboxVBO = vbo;
+	glBindVertexArray(skyboxVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+}
+```
 
 ## Look around camera
 
