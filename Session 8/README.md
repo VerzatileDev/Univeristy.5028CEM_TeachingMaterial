@@ -213,7 +213,7 @@ TreeTexLoc,
 * Add texture filename
 
 ```C++
-TreeTexLoc,
+"Textures/trees.png",
 ```
 
 * Increase array size
