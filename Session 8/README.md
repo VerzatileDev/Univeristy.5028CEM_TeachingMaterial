@@ -127,6 +127,18 @@ static enum object {FIELD, SKY,SPHERE, TREE}; // VAO ids.
 static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES, TREE_VERTICES}; // VBO ids.
 ```
 
+Add Tree rectangle vertices.
+
+```C++
+static Vertex treeVertices[4] =
+{
+	{vec4(20.0, 0.0, -20.0, 1.0), vec2(1.0, 0.0)},
+	{vec4(20.0, 40.0, -20.0, 1.0), vec2(1.0, 1.0)},
+	{vec4(-20.0, 0.0, -20.0, 1.0), vec2(0.0, 0.0)},
+	{vec4(-20.0, 40.0, -20.0, 1.0), vec2(0.0, 1.0)}
+};
+```
+
 * Increase VAO and VBO array size
 
 ```C++
