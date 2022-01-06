@@ -1,4 +1,4 @@
-# Session 1 - Setting up the project and GitHub (optional)
+# Session 1 - Setting up the project and GitHub
 
 #### Table of Contents
 1. [Setting up in GitHub](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#setting-up-in-github)
