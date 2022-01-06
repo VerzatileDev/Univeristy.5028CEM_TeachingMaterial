@@ -24,10 +24,10 @@ BUT WE WANT TO EASE YOU INTO MODERN OPENGL WITH THIS WEEKS LAB TASKS.
 > A VERTEX BUFFER OBJECT OR VBO IS AN ARRAY OF DATA THAT IS COPIED TO THE GPU BEFORE DRAWING AND RAN ON THE GPU
 
 ---- Download the Base Projecrt ----
-> Please download ModernOpenGLSimple.zip and unzip it. The OpenGL library has been sep up so it can be compiled.
+> Please download ModernOpenGLSimple.zip and unzip it. The OpenGL library has been set up so it can be compiled.
 
 ---- Set up Data ----
-> Add following data codes just before void drawScene(void) function in square.cpp file
+> Add following data codes (four vertices for the square) just before void drawScene(void) function in square.cpp file
 
 ```C++
 float vertices[] = 
