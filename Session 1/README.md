@@ -10,7 +10,7 @@
 7. [The power of the .gitignore file](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#the-power-of-the-gitignore-file)
 8. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Homework)
 
-Welcome to this 212CR tutorial series! 
+Welcome to this 5028CEM tutorial series! 
 
 > By following these sessions, we will create the underlying areas needed for a 3D OpenGL game. 
 
@@ -42,7 +42,7 @@ Click on + button to add new repository under your username. You are also welcom
  
 ![Create a repository picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201/Readme%20Pictures/CreateRepos.PNG)
  
- Finally, add the module staff to your repository so they have access to it. (Our information can be found on the 212CR Aula page under _Module Essentials_.)
+ Finally, add the module staff to your repository so they have access to it. (Our information can be found on the 5028CEM Aula page under _Module Essentials_.)
  
  Go into your repository from the website, click "Settings", then "Collaborators", and then search for, and add, both members of module staff (YingLiang Ma (ac7020) and Ian) to the page. 
  
@@ -145,7 +145,7 @@ That should pop up a console window with _"Hello world!"_ in it.
 
 Now the project is created, we will need to display 3D objects to the screen.
 
-> For this, I will use a legacy version of OpenGL which is for testing purpose only. The graphics implemented as part of this tutorial series are **not enough to pass in the 212CR module.**
+> For this, I will use a legacy version of OpenGL which is for testing purpose only. The graphics implemented as part of this tutorial series are **not enough to pass in the 5028CEM module.**
 
 The libraries we will be using are:
 
