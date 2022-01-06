@@ -382,7 +382,7 @@ Both modelview and project matrix are used to definition the camera.
 
 ```C++
 ///MODERN OPENGL - OUR MATRICES - MODELVIEW (COMBINED MODEL MATRIX AND VIEW MATRIX) AND PROJECTION MATRIX
-///				 - WHAT THESE DO IS ON MOODLE AS A LINK THAT SHOWS A DIAGRAM - http://antongerdelan.net/opengl/raycasting.html
+///				 - WHAT THESE DO IS:  A LINK THAT SHOWS A DIAGRAM - http://antongerdelan.net/opengl/raycasting.html
 ///				 - I HAVE USED GLM (A MATHS LIBRARY) TO DO MY MATRICES WHILE THE BOOK CODE USES A SELF DEFINED METHOD
 
 glm::mat4 modelViewMat(1.0f);
@@ -392,7 +392,7 @@ glm::mat4 projMat(1.0f);
 Add program location and other global variables
 
 ```C++
-///MODERN OPENGL - THESE ARE USED IN THE SETUPO TO SET UP SHADERS AND SEND DATA TO THEM
+///MODERN OPENGL - THESE ARE USED IN THE SETUP TO SET UP SHADERS AND SEND DATA TO THEM
 unsigned int programId,		vertexShaderId,		fragmentShaderId,	modelViewMatLoc,	projMatLoc;
 ```
 
@@ -419,6 +419,7 @@ char* readTextFile(const char* aTextFile)
 	return content;
 }
 
+//Help to check syntax errors in codes 
 void shaderCompileTest(GLuint shader)
 { 
 	GLint result = GL_FALSE; 
@@ -495,8 +496,10 @@ Replace
 with
 
 ```C++
+   //The first one is for vextex data
    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(squareVertices[0]), 0);
    glEnableVertexAttribArray(0);
+   //The second one is for color data
    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(squareVertices[0]), (GLvoid*)sizeof(squareVertices[0].coords));
    glEnableVertexAttribArray(1);
 ```
@@ -532,8 +535,10 @@ Replace
 with
 
 ```C++
+   //The first one is for vextex data
    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(triangleVertices[0]), 0);
    glEnableVertexAttribArray(0);
+   //The second one is for color data
    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(triangleVertices[0]), (GLvoid*)sizeof(triangleVertices[0].coords));
    glEnableVertexAttribArray(1);
 ```
@@ -541,7 +546,7 @@ with
 Add mdoelview and project matrix codes
 
 ```C++
-  // Obtain projection matrix uniform location and set value.
+ 
   glm::mat4 projMat  =
 	{
 		0.02, 0.0,  0.0, -1.0,
@@ -549,7 +554,9 @@ Add mdoelview and project matrix codes
 		0.0,  0.0, -1.0,  0.0,
 		0.0,  0.0,  0.0,  1.0
 	};
+   // Obtain projection matrix uniform location and set value.
    projMatLoc = glGetUniformLocation(programId, "projMat");
+   // Send data to the Shader
    glUniformMatrix4fv(projMatLoc, 1, GL_TRUE, glm::value_ptr(projMat));
    ///////////////////////////////////////
 
