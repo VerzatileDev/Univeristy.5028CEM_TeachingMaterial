@@ -107,9 +107,9 @@ float vertices1[] =
 
 float colours1[] =
 {
-	1.0, 0.0, 1.0,
-	1.0, 0.0, 1.0,
-	1.0, 0.0, 1.0
+	1.0, 0.0, 0.0,
+	0.0, 1.0, 0.0,
+	0.0, 0.0, 1.0
 };
 
 /// MODERN OPENGL - WILL HOLD 2 BUFFER OBJECT NAMES (SQUARE, TRIANGLE)
@@ -131,20 +131,6 @@ void drawScene(void)
    glBindVertexArray(vao[1]);
    /// MODERN OPENGL - DRAW A GL_TRIANGLE_STRIP USING THE 4 VERTICES IN THE VBO
    glDrawArrays(GL_TRIANGLES, 0, 3);
-
-   /*
-			LEGACY OPENGL - CANNOT USE ANYMORE
-   
-		   glColor3f(0.0, 0.0, 0.0);
-
-		   glBegin(GL_POLYGON);
-			  glVertex3f(20.0, 20.0, 0.0);
-			  glVertex3f(80.0, 20.0, 0.0);
-			  glVertex3f(80.0, 80.0, 0.0);
-			  glVertex3f(20.0, 80.0, 0.0);
-		   glEnd();
- 
-   */
 
    glFlush(); 
 }
