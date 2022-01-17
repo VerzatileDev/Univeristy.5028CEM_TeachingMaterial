@@ -262,10 +262,31 @@ Go into your project files and delete the _".vs"_ and _"x64"_ folders from the p
 
 This should now allow you to add, commit and push future changes with visual studio open. It should also not bring in unneeded Build folders when you pull and clone your repository in the future saving on downloading MBs of extra data.
 
+
 ## Draw Square
 
 Replace some codes inside the _"BaseCode.cpp"_ to draw a red square.
 
+Change project statement to
+
+```C++
+glOrtho(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
+```
+
+Disable Lighting and disable deep testing.
+
+Change drawing codes to 
+
+```C++
+	glBegin(GL_POLYGON);
+	glVertex3f(20.0, 20.0, 0.0);
+	glVertex3f(80.0, 20.0, 0.0);
+	glVertex3f(80.0, 80.0, 0.0);
+	glVertex3f(20.0, 80.0, 0.0);
+	glEnd();
+```
+
+Add red color statement before the drawing codes.
 
 ## Homework
 
