@@ -1,15 +1,15 @@
 # Session 1 - Setting up the project and GitHub
 
 #### Table of Contents
-1. [Setting up in GitHub](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#setting-up-in-github)
-2. [Cloning the repository](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#cloning-the-repository)
-3. [Creating a C++ Project using Visual Studio](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#creating-a-c-project-using-visual-studio)
-4. [Using OpenGL with the project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#using-opengl-with-the-project)
-5. [Base Code](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#base-code)
-6. [Pushing the changes to the repository](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#pushing-the-changes-to-the-repository)
-7. [The power of the .gitignore file](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#the-power-of-the-gitignore-file)
-8. [Draw Square](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Draw-Square)
-9. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Homework)
+1. [Setting up in GitHub](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#setting-up-in-github)
+2. [Cloning the repository](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#cloning-the-repository)
+3. [Creating a C++ Project using Visual Studio](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#creating-a-c-project-using-visual-studio)
+4. [Using OpenGL with the project](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#using-opengl-with-the-project)
+5. [Base Code](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#base-code)
+6. [Pushing the changes to the repository](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#pushing-the-changes-to-the-repository)
+7. [The power of the .gitignore file](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#the-power-of-the-gitignore-file)
+8. [Draw Square](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#Draw-Square)
+9. [Homework](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/blob/master/Session%201#Homework)
 
 Welcome to this 5028CEM tutorial series! 
 
