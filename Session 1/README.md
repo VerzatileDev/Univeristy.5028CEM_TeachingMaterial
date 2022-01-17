@@ -8,7 +8,8 @@
 5. [Base Code](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#base-code)
 6. [Pushing the changes to the repository](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#pushing-the-changes-to-the-repository)
 7. [The power of the .gitignore file](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#the-power-of-the-gitignore-file)
-8. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Homework)
+8. [Draw Square](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Draw-Square)
+9. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%201#Homework)
 
 Welcome to this 5028CEM tutorial series! 
 
@@ -260,6 +261,11 @@ Download the _.gitignore_ file from the Aula Week 1 (Acitivies) page  and move i
 Go into your project files and delete the _".vs"_ and _"x64"_ folders from the project files. Now push this all to your repository.
 
 This should now allow you to add, commit and push future changes with visual studio open. It should also not bring in unneeded Build folders when you pull and clone your repository in the future saving on downloading MBs of extra data.
+
+## Draw Square
+
+Replace some codes inside the _"BaseCode.cpp"_ to draw a red square.
+
 
 ## Homework
 
