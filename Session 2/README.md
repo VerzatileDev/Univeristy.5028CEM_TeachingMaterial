@@ -4,8 +4,8 @@
 1. [Create VBO](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#create-vbo)
 2. [Create VAO](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#create-vao)
 3. [Convert to Modern OpenGL shader codes](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Convert-to-Modern-OpenGL-shader-codes)
-4. [Draw hexagon](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Draw-hexagon)
-5. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Homework)
+4. [Draw hexagon](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/tree/master/Session%202#draw-hexagon)
+5. [Homework](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/tree/master/Session%202#homework)
 
 Welcome to Week 2! 
 
