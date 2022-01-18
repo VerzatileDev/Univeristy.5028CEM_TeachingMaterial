@@ -613,7 +613,7 @@ First, we need a center vertex (50,50). Then we need 6 vertices on hexagon. Fina
 ```C++
 Vertex squareVertices[] =
 {
-	{ { 50.0, 50.0, 0.0, 1.0 },{ 0.0, 1.0, 0.0, 1.0 } },
+	{ { 50.0, 50.0, 0.0, 1.0 },{ 0.0, 1.0, 0.0, 1.0 } }, //first vertex, also the center vextex
 ```
 
 You need to complete rest of vertex data by using following equation.
