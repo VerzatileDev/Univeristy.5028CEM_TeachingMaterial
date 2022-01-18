@@ -588,7 +588,20 @@ the name of uniform variable in vertext shader has to be exact the same name as 
 
 Now, it is time to play with modern OpenGL codes.
 Let us draw a hexagon using the codes you wrote in the last section. 
-First, 
+First, let turn off the drawing of a triangle. It is simple to comment out the drawing codes.
+
+```C++
+	/// MODERN OPENGL - DRAW A GL_TRIANGLE_STRIP USING THE 4 VERTICES IN THE VBO
+	//glDrawArrays(GL_TRIANGLES, 0, 3); //turn off drawing
+```
+
+Then, let us modify the 
+```C++
+Vertex squareVertices[] 
+```
+
+So that a hexagon vertex data replace the square vertex data.
+
 
 
 ## Homework
