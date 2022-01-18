@@ -591,7 +591,7 @@ Let us draw a hexagon using the codes you wrote in the last section.
 First, let turn off the drawing of a triangle. It is simple to comment out the drawing codes.
 
 ```C++
-	/// MODERN OPENGL - DRAW A GL_TRIANGLE_STRIP USING THE 4 VERTICES IN THE VBO
+	/// MODERN OPENGL - DRAW A GL_TRIANGLE_STRIP USING THE 3 VERTICES IN THE VBO
 	//glDrawArrays(GL_TRIANGLES, 0, 3); //turn off drawing
 ```
 
@@ -600,9 +600,14 @@ Then, let us modify the
 Vertex squareVertices[] 
 ```
 
-So that a hexagon vertex data replace the square vertex data.
+So that a hexagon vertex data replace the square vertex data. 
+We will use triangle fan to draw hexagon instead of triangle strip. Please think why use triangle fan.
+So, the drawing codes for hexagon become
+```C++
+glDrawArrays(GL_TRIANGLE_FAN, 0, 8); 
+```
 
-
+There are 8 vertices. Why? 
 
 ## Homework
 
