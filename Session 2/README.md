@@ -587,6 +587,8 @@ the name of uniform variable in vertext shader has to be exact the same name as 
 ## Draw hexagon
 
 Now, it is time to play with modern OpenGL codes.
+Let us draw a hexagon using the codes you wrote in the last section. 
+First, 
 
 
 ## Homework
