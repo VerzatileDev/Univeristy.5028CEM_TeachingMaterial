@@ -4,7 +4,8 @@
 1. [Create VBO](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#create-vbo)
 2. [Create VAO](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#create-vao)
 3. [Convert to Modern OpenGL shader codes](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Convert-to-Modern-OpenGL-shader-codes)
-4. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Homework)
+4. [Draw hexagon](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Draw-hexagon)
+5. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%202#Homework)
 
 Welcome to Week 2! 
 
@@ -582,6 +583,11 @@ Please note that location in layout in vertex shader is linking to "n" in glVert
 the name of uniform variable in vertext shader has to be exact the same name as it in glGetUniformLocation.
 
 ![Shader picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%202/Readme%20Pictures/ShaderProg.JPG)
+
+## Draw hexagon
+
+Now, it is time to play with modern OpenGL codes.
+
 
 ## Homework
 
