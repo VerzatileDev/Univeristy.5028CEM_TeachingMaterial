@@ -608,6 +608,21 @@ glDrawArrays(GL_TRIANGLE_FAN, 0, 8);
 ```
 
 There are 8 vertices. Why? 
+First, we need a center vertex (50,50). Then we need 6 vertices on hexagon. Finally, 1 more vertex to complete the drawing.
+
+```C++
+Vertex squareVertices[] =
+{
+	{ { 50.0, 50.0, 0.0, 1.0 },{ 0.0, 1.0, 0.0, 1.0 } },
+```
+
+You need to complete rest of vertex data by using following equation.
+
+```C++
+x = radius*cos(angle) + centerX;
+y = radius*sin(angle) + centerY;
+```
+
 
 ## Homework
 
