@@ -623,6 +623,9 @@ x = radius*cos(angle) + centerX;
 y = radius*sin(angle) + centerY;
 ```
 
+Finally, the result looks like.
+
+![Shader picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%202/Readme%20Pictures/hexagon.JPG)
 
 ## Homework
 
