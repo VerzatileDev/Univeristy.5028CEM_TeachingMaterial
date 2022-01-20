@@ -326,14 +326,7 @@ Keep background color codes in drawScene function
 	glLoadIdentity();
 ```
 
-Insert new drawing codes
-
-```C++
-	glFlush();
-```
-
-Keep Screen refresh codes in drawScene function
-
+Insert new drawing codes after background color codes
 
 ```C++
 	glBegin(GL_POLYGON);
@@ -342,6 +335,12 @@ Keep Screen refresh codes in drawScene function
 	glVertex3f(80.0, 80.0, 0.0);
 	glVertex3f(20.0, 80.0, 0.0);
 	glEnd();
+```
+
+Keep Screen refresh codes in drawScene function
+
+```C++
+	glFlush();
 ```
 
 Add red color statement before the drawing codes.
