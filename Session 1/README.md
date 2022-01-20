@@ -267,15 +267,73 @@ This should now allow you to add, commit and push future changes with visual stu
 
 Replace some codes inside the _"BaseCode.cpp"_ to draw a red square.
 
-Change project statement to
+Change projection statement to
 
 ```C++
 glOrtho(0.0, 100.0, 0.0, 100.0, -1.0, 1.0);
 ```
 
-Disable Lighting and disable deep testing.
+By replacing the old projection statement in resize function
 
-Change drawing codes to 
+```C++
+gluPerspective(40, 1, 4, 20);
+```
+
+Disable Lighting and disable deep testing. Delete 
+
+```C++
+	/* set up depth-buffering */
+	glEnable(GL_DEPTH_TEST);
+
+	/* turn on default lighting */
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+```
+
+Delete old drawing codes in drawScene function
+
+```C++
+    // Modeling transformations.
+	glTranslatef(xx, 0.0, -5.0);
+
+	glTranslatef(0.0, 0.0, -5.0);
+	glRotatef(25, 1, 0, 0);
+	glRotatef(45, 0, 1, 0);
+
+	glPushMatrix();                   // body
+	glScalef(2, .5, 1);
+	glutSolidCube(.5);
+	glPopMatrix();
+	glTranslatef(0, 0, .25);
+	glPushMatrix();
+	glTranslatef(-0.4, -0.2, 0);
+	glutSolidTorus(0.05, .1, 8, 8);       // wheel
+	glTranslatef(0.8, 0, 0);
+	glutSolidTorus(0.05, 0.1, 8, 8);       // wheel
+	glPopMatrix();
+	glTranslatef(0, 0, -0.5);
+	glPushMatrix();
+	glTranslatef(-0.4, -0.2, 0);
+	glutSolidTorus(0.05, 0.1, 8, 8);       // wheel
+	glTranslatef(0.8, 0, 0);
+	glutSolidTorus(0.05, 0.1, 8, 
+```
+
+Keep background color codes in drawScene function
+```C++
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glColor3f(0.0, 0.0, 0.0);
+	glLoadIdentity();
+```
+
+Insert new drawing codes
+
+```C++
+	glFlush();
+```
+
+Keep Screen refresh codes in drawScene function
+
 
 ```C++
 	glBegin(GL_POLYGON);
