@@ -460,7 +460,8 @@ Add shader loading and compiling check codes in the void setup(void) (after glCl
    glUseProgram(programId);
 ```
 
-For Square vertices. 
+For Square vertices
+
 Remove glEnableClientState functions (no longer needed for shaders)
 
 ```C++
@@ -506,7 +507,8 @@ with
    glEnableVertexAttribArray(1);
 ```
 
-For Triangle vertices. 
+For Triangle vertices
+ 
 Remove glEnableClientState functions (no longer needed for shaders)
 
 ```C++
