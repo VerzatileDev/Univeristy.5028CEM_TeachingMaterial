@@ -376,7 +376,7 @@ Vertex triangleVertices[] =
 ```
 
 
-Add modelview and project matrix definition
+Add modelview and project matrix definition in the gobal variables.
 
 Both modelview and project matrix are used to definition the camera.
 
@@ -460,6 +460,7 @@ Add shader loading and compiling check codes in the void setup(void) (after glCl
    glUseProgram(programId);
 ```
 
+For Square vertices. 
 Remove glEnableClientState functions (no longer needed for shaders)
 
 ```C++
@@ -505,6 +506,7 @@ with
    glEnableVertexAttribArray(1);
 ```
 
+For Triangle vertices. 
 Remove glEnableClientState functions (no longer needed for shaders)
 
 ```C++
@@ -544,7 +546,7 @@ with
    glEnableVertexAttribArray(1);
 ```
 
-Add mdoelview and project matrix codes
+Add modelview and project matrix codes, Please add after glEnableVertexAttribArray codes inside void setup(void) function
 
 ```C++
  
