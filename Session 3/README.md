@@ -42,15 +42,15 @@ Add following private data variables and functions into the sphere class.
 
 ```C++
 private:
-   vec3 Position;
+   vec3 Position; //The Sphere position in 3D world
    VertexWtihNormal *sphereVerticesNor;  //Sphere vertices data with normals
    unsigned int *sphereIndices;          //Sphere triangle indices    
 
-   int stacks; // nunber of segments
-   int slices; // number of segments
+   int stacks; // nunber of stacks
+   int slices; // number of slices
    float radius;
 
-   void CreateSpherewithNormal();
+   void CreateSpherewithNormal(); //The function creates vertex data and normals 
 ```
 
 Add following public functions into the sphere class.
@@ -60,10 +60,10 @@ public:
 	Sphere();
 	~Sphere();
 
-	void SetPosition(vec3 newPos); 
-	vec3 GetPosition(void);
-	VertexWtihNormal * GetVerData(int &);
-	unsigned int * GetTriData(int &);
+	void SetPosition(vec3 newPos); //set the 3D position of the sphere
+	vec3 GetPosition(void);        //get the 3D position of the sphere    
+	VertexWtihNormal * GetVerData(int &); //get vertex data and normals
+	unsigned int * GetTriData(int &);     //get triangle index data
 ```
 
 Both GetVerData and GetTriData allow the external function to extract data from the Sphere class.
@@ -82,10 +82,10 @@ Add constructor and destructor functions
 ```C++
 Sphere::Sphere()
 {
-	stacks = 10; //number of segments
-	slices = 10; //number of segments
+	stacks = 10; //number of stacks
+	slices = 10; //number of slices
 	radius = 6.0f;
-	Position = vec3(0);
+	Position = vec3(0); //initialize the 3D position to (0,0,0)
 
 	sphereVerticesNor = (VertexWtihNormal *)malloc(sizeof(VertexWtihNormal) * 121); //total number of vertices = (stacks+1)*(slices +1)
 	sphereIndices = (unsigned int *)malloc(sizeof(unsigned int) * 660);
@@ -112,7 +112,7 @@ void Sphere::CreateSpherewithNormal(void)
 		GLfloat V = i / (float)stacks;
 		GLfloat phi = V * glm::pi <float>();
 
-		// Loop Through Slices
+		// Loop through Slices
 		for (int j = 0; j <= slices; ++j) {
 
 			GLfloat U = j / (float)slices;
