@@ -109,21 +109,21 @@ void Sphere::CreateSpherewithNormal(void)
 	count = 0;
 	for (int i = 0; i <= stacks; ++i) {
 
-		GLfloat V = i / (float)stacks;
-		GLfloat phi = V * glm::pi <float>();
+		GLfloat V = i / (float)stacks; //The parameter along all stacks, it range from 0 to 1
+		GLfloat phi = V * glm::pi <float>(); // The phi angle, it was converted to radian 
 
 		// Loop through Slices
 		for (int j = 0; j <= slices; ++j) {
 
-			GLfloat U = j / (float)slices;
-			GLfloat theta = U * (glm::pi <float>() * 2);
+			GLfloat U = j / (float)slices; //The parameter along all slices, it range from 0 to 1
+			GLfloat theta = U * (glm::pi <float>() * 2); // The theta angle, it was converted to radian 
 
-			// Calc The Vertex Positions
+			// Calc The Vertex Positions, use the equations described in lecture slides
 			GLfloat x = cosf(theta) * sinf(phi);
 			GLfloat y = cosf(phi);
 			GLfloat z = sinf(theta) * sinf(phi);
 
-			sphereVerticesNor[count].coords = vec4(x * radius, y * radius + 6.0, z * radius, 1.0);
+			sphereVerticesNor[count].coords = vec4(x * radius, y * radius + 6.0, z * radius, 1.0); //6.0 is just small tweak, you can remove it 
 			sphereVerticesNor[count].normals = vec3(x, y, z); ///Sphere normals
 
 			count++;
@@ -134,6 +134,7 @@ void Sphere::CreateSpherewithNormal(void)
 	// Calc The Index Positions
 	for (int i = 0; i < slices * stacks + slices; ++i) {
 
+        //The triangle index is explained in the lecture slides
 		sphereIndices[count] = i;
 		count++;
 		sphereIndices[count] = i + slices + 1;
@@ -157,24 +158,24 @@ void Sphere::CreateSpherewithNormal(void)
 Finish with some external access functions
 
 ```C++
-VertexWtihNormal * Sphere::GetVerData(int &verNum)
+VertexWtihNormal * Sphere::GetVerData(int &verNum) //get vertex data and normals
 {
 	verNum = 121;
 	return sphereVerticesNor;
 }
 
-unsigned int * Sphere::GetTriData(int &triNum)
+unsigned int * Sphere::GetTriData(int &triNum)  //get triangle index data
 {
 	triNum = 660;
 	return sphereIndices;
 }
 
-void Sphere::SetPosition(vec3 newPos)
+void Sphere::SetPosition(vec3 newPos) //set the 3D position of the sphere
 {
 	Position = newPos;
 }
 
-vec3 Sphere::GetPosition(void)
+vec3 Sphere::GetPosition(void) //get the 3D position of the sphere
 {
 	return Position;
 }
@@ -194,26 +195,30 @@ Add sphere global variables
 Add following declare codes for sphere object and its data (vertices, normals and triangle indices)
 
 ```C++
-static VertexWtihNormal *sphereVerticesNor = NULL;
-static unsigned int *sphereIndices = NULL;
-static Sphere testSphere;
+static VertexWtihNormal *sphereVerticesNor = NULL;  //vertex data and normals for the sphere
+static unsigned int *sphereIndices = NULL;          //The triangle index data for the sphere
+static Sphere testSphere;                           //Create an object of Sphere class 
 ```
 BIND THE BUFFER OBJECT
 
 > In the void setup(void) function, add following lines after  "//Sphere vertex data here" comments 
 ```C++
    // Obtain sphere data
-   int verCount, triCount;
+   int verCount, triCount; //vertex count and triangle index count
    sphereVerticesNor = testSphere.GetVerData(verCount);
    sphereIndices = testSphere.GetTriData(triCount);
    
-   //Binding VAO and VBO
+   //Binding VAO 
    glBindVertexArray(vao[SPHERE]);
+   //Binding VBO
    glBindBuffer(GL_ARRAY_BUFFER, buffer[SPHERE_VERTICES]);
-   glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWtihNormal)*verCount, sphereVerticesNor, GL_STATIC_DRAW);  ///please note the change
+   //creates a new data store for the buffer object currently bound to GL_ARRAY_BUFFER
+   glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWtihNormal)*verCount, sphereVerticesNor, GL_STATIC_DRAW);  
+   //Binding Vertex array indices
    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[SPHERE_INDICES]);
-   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*triCount, sphereIndices, GL_STATIC_DRAW); ///please note the change
-   glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), 0);  //layout(location=4) in vec4 fieldCoords;
+   ////creates a new data store for the buffer object currently bound to GL_ELEMENT_ARRAY_BUFFER
+   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*triCount, sphereIndices, GL_STATIC_DRAW); 
+   glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), 0);  
    glEnableVertexAttribArray(2);
    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), (GLvoid*)sizeof(sphereVerticesNor[0].normals));
    glEnableVertexAttribArray(3);
