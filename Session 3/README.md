@@ -216,7 +216,7 @@ BIND THE BUFFER OBJECT
    glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWtihNormal)*verCount, sphereVerticesNor, GL_STATIC_DRAW);  
    //Binding Vertex array indices
    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer[SPHERE_INDICES]);
-   ////creates a new data store for the buffer object currently bound to GL_ELEMENT_ARRAY_BUFFER
+   //creates a new data store for the buffer object currently bound to GL_ELEMENT_ARRAY_BUFFER
    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*triCount, sphereIndices, GL_STATIC_DRAW); 
    glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), 0);  
    glEnableVertexAttribArray(2);
@@ -230,7 +230,7 @@ BIND THE BUFFER OBJECT
    int triCount;
    sphereIndices = testSphere.GetTriData(triCount);
 
-   glUniform1ui(objectLoc, SPHERE);  //if (object == SPHERE)
+   glUniform1ui(objectLoc, SPHERE);  //send Object ID to the shader. if (object == SPHERE)
    glBindVertexArray(vao[SPHERE]);
    glDrawElements(GL_TRIANGLE_STRIP, triCount, GL_UNSIGNED_INT, sphereIndices);  ///use index array to control triangle drawing
 ```
@@ -250,9 +250,9 @@ You add them anywhere in global variable definition area (before void setup(void
 ```C++
 struct Material
 {
-	vec4 ambRefl;
-	vec4 difRefl;
-	vec4 specRefl;
+	vec4 ambRefl; //ambient color
+	vec4 difRefl; //diffuse color
+	vec4 specRefl; //
 	vec4 emitCols;
 	float shininess;
 };
