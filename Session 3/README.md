@@ -466,10 +466,105 @@ Use left and right arrow keys to move the camera
 
 * Create A cube from scratch using modern OpenGL
 
+Vertex structure definition
+
+```C++
+struct Vertex
+{
+	glm::vec4 position;
+	glm::vec4 colour;
+};
+``` 
+
+Data is
+
+```C++
+   std::vector<Vertex> vertices;
+   vertices = {
+        //front face
+       { {-1.f, 1.f, -1.f, 1.f},    {1.f, 1.f, 1.f, 1.f} },
+       { {-1.f, -1.f, -1.f, 1.f},   {1.f, 1.f, 1.f, 1.f} },
+       { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 1.f, 1.f} },
+
+       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 0.f, 1.f} },
+       { {1.f, -1.f, -1.f, 1.f},    {0.f, 1.f, 0.f, 1.f} },
+       { {1.f, 1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+
+       //left hand side face
+       { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+       { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
+       { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 0.f, 1.f} },
+
+       { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
+       { {1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+       { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 1.f, 1.f} },
+
+       //right hand side face
+       { {-1.f, 1.f, -1.f, 1.f},    {0.f, 0.f, 1.f, 1.f} },
+       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 0.f, 1.f, 1.f} },
+       { {-1.f, 1.f, 1.f, 1.f},     {0.f, 0.f, 1.f, 1.f} },
+
+       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 1.f, 1.f} },
+       { {-1.f, -1.f, 1.f, 1.f},    {0.f, 1.f, 1.f, 1.f} },
+       { {-1.f, 1.f, 1.f, 1.f},     {0.f, 1.f, 1.f, 1.f} },
+
+       //back face
+       { {-1.f, 1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
+       { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
+       { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+
+       { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
+       { {1.f, -1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
+       { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+
+       //top face
+       { {-1.f, 1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
+       { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+       { {-1.f, 1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+
+       { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+       { {1.f, 1.f, 1.f, 1.f},      {1.f, 1.f, 0.f, 1.f} },
+       { {-1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+
+       //bottom face
+       { {-1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
+       { {1.f, -1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+       { {-1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+
+       { {1.f, -1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+       { {1.f, -1.f, 1.f, 1.f},      {0.f, 1.f, 0.f, 1.f} },
+       { {-1.f, -1.f, 1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+
+    };
+
+```   
+
+Setup codes
+
+```C++
+	glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &vbo);
+
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)sizeof(Vertex::position));
+    glEnableVertexAttribArray(1);
+```
+
+Drawing codes
+
+```C++
+    glBindVertexArray(vao);
+    glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+```
+
 > There is tutorial. The link is  http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
 
-> Ian Evan also developed a base project which incude an example of Cube object
-https://github.coventry.ac.uk/ab8809/5025CEM-Tutorial-Project-Code
+
 
 
 
