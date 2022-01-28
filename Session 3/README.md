@@ -252,16 +252,16 @@ struct Material
 {
 	vec4 ambRefl; //ambient color
 	vec4 difRefl; //diffuse color
-	vec4 specRefl; //
-	vec4 emitCols;
-	float shininess;
+	vec4 specRefl; //specular color
+	vec4 emitCols; //emitting color
+	float shininess; 
 };
 
 struct Light
 {
-	vec4 ambCols;
-	vec4 difCols;
-	vec4 specCols;
+	vec4 ambCols; //ambient color
+	vec4 difCols; //diffuse color
+	vec4 specCols; //specular color
 	vec4 coords;
 };
 ```
@@ -271,7 +271,7 @@ struct Light
 
 ```C++
 static const vec4 globAmb = vec4(0.2, 0.2, 0.2, 1.0);
-// Front and back material properties.
+// Material properties definition for sphere. The current color is yellow.
 static const Material sphereFandB =
 {
 	vec4(1.0, 1.0, 0.0, 1.0),
@@ -281,6 +281,7 @@ static const Material sphereFandB =
 	50.0f
 };
 
+//Color and position of the light
 static const Light light0 =
 {
 	vec4(0.0, 0.0, 0.0, 1.0),
@@ -294,7 +295,7 @@ static const Light light0 =
 > Add following codes in void setup(void) before comments "// Create VAOs and VBOs... "
 
 ```C++
-   //codes for OpenGL lighting
+   //Send sphere material to shader via uniform variables 
    glUniform4fv(glGetUniformLocation(programId, "sphereFandB.ambRefl"), 1,&sphereFandB.ambRefl[0]);
    glUniform4fv(glGetUniformLocation(programId, "sphereFandB.difRefl"), 1,&sphereFandB.difRefl[0]);
    glUniform4fv(glGetUniformLocation(programId, "sphereFandB.specRefl"), 1,&sphereFandB.specRefl[0]);
@@ -303,6 +304,7 @@ static const Light light0 =
 
    glUniform4fv(glGetUniformLocation(programId, "globAmb"), 1, &globAmb[0]);
 
+   //Send light data to shader via uniform variables 
    glUniform4fv(glGetUniformLocation(programId, "light0.ambCols"), 1,&light0.ambCols[0]);
    glUniform4fv(glGetUniformLocation(programId, "light0.difCols"), 1,&light0.difCols[0]);
    glUniform4fv(glGetUniformLocation(programId, "light0.specCols"), 1,&light0.specCols[0]);
@@ -315,6 +317,7 @@ Open fragmentShader.glsl. You can drag fragmentShader.glsl into Visual Studio an
 Add the same structure definition codes into fragmentShader.glsl (after in "vec3 normalExport;")
 
 ```C++
+//you should have the exact structure definition as it is in C++ codes.
 struct Light
 {
    vec4 ambCols;
@@ -323,6 +326,7 @@ struct Light
    vec4 coords;
 };
 
+//you should have the exact structure definition as it is in C++ codes.
 struct Material
 {
    vec4 ambRefl;
@@ -350,6 +354,7 @@ Finally, add lighting calculation codes for ambient and diffuse effects. (add in
 Replace "colorsOut =  vec4(0.0,1.0,0.0, 1.0);  " (we do not need fixed color anymore.)
 
 ```C++
+    //diffuse lighting effect calculation
 	normal = normalize(normalExport);
 	lightDirection = normalize(vec3(light0.coords));
 	fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); 
@@ -378,10 +383,14 @@ static float zVal = 0; // Z Co-ordinates of the ball.
 In void drawScene(void) function, add sphere translation codes before "glUniform1ui(objectLoc, SPHERE); "
 		
 ```C++
+   //Initialize the 4x4 matrix as indentity matrix
    modelViewMat = mat4(1.0);
+   //use lookAt function to define the camera
    modelViewMat = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0, 10.0, 0.0), vec3(0.0, 1.0, 0.0)); //apply the same modelview as other objects
-   modelViewMat = translate(modelViewMat, testSphere.GetPosition()); //apply Sphere Position and modify the modelview matrix
-   glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));  //send modelview matrix to the shader
+   //Add additional translation of the sphere (move the sphere)
+   modelViewMat = translate(modelViewMat, testSphere.GetPosition()); 
+   //send modelview matrix to the shader
+   glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));  
 ```
 
 * Step 3: Modifiy void animate() function
@@ -389,7 +398,9 @@ In void drawScene(void) function, add sphere translation codes before "glUniform
 Add following codes before "glutPostRedisplay();" in animate() function. It changes zVal by -0.2 in every frame.
 
 ```C++
+    // use a changing zVal to animate the sphere position in 3D world
 	zVal = zVal -0.2;
+	//make sure that the sphere does not go outside the field of view.
 	if (zVal < -25.0) zVal = 0.0;
 	testSphere.SetPosition(vec3(0, 0, zVal)); //modify sphere's position
 ```
@@ -422,6 +433,7 @@ modelViewMat = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0, 10.0, 0.0), vec3(0.0, 1.0
 
 to 
 ```C++
+//Allow the key control the camera via modification of d value
 modelViewMat = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0 + d, 10.0, 0.0), vec3(0.0, 1.0, 0.0));
 ```
 
@@ -433,6 +445,7 @@ We need to change both lookAt() functions in drawScene(void) function.
 Add codes to change d value 
 
 ```C++
+   // use left and right arrow keys to move the camera
    if (key == GLUT_KEY_LEFT) 
    {
 	   if (d > -50.0) d -= 0.1;
@@ -454,6 +467,8 @@ Use left and right arrow keys to move the camera
 * Create A cube from scratch using modern OpenGL
 
 > There is tutorial. The link is  http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
+> Ian Evan also developed a base project which incude an example of Cube object
+https://github.coventry.ac.uk/ab8809/5025CEM-Tutorial-Project-Code
 
 
 
