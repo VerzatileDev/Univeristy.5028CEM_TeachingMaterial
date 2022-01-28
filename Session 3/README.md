@@ -354,11 +354,11 @@ Finally, add lighting calculation codes for ambient and diffuse effects. (add in
 Replace "colorsOut =  vec4(0.0,1.0,0.0, 1.0);  " (we do not need fixed color anymore.)
 
 ```C++
-    //diffuse lighting effect calculation
-	normal = normalize(normalExport);
-	lightDirection = normalize(vec3(light0.coords));
-	fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); 
-    colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0); 
+//diffuse lighting effect calculation
+normal = normalize(normalExport);
+lightDirection = normalize(vec3(light0.coords));
+fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); 
+colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0); 
 ```
 
 Please note that you do not need compile the C++ project when change shader codes. You just change shader codes. Save it and run it.
@@ -398,11 +398,11 @@ In void drawScene(void) function, add sphere translation codes before "glUniform
 Add following codes before "glutPostRedisplay();" in animate() function. It changes zVal by -0.2 in every frame.
 
 ```C++
-    // use a changing zVal to animate the sphere position in 3D world
-	zVal = zVal -0.2;
-	//make sure that the sphere does not go outside the field of view.
-	if (zVal < -25.0) zVal = 0.0;
-	testSphere.SetPosition(vec3(0, 0, zVal)); //modify sphere's position
+// use a changing zVal to animate the sphere position in 3D world
+zVal = zVal -0.2;
+//make sure that the sphere does not go outside the field of view.
+if (zVal < -25.0) zVal = 0.0;
+testSphere.SetPosition(vec3(0, 0, zVal)); //modify sphere's position
 ```
 
 glutIdleFunc(animate); has been added into main function, which enables animation.
