@@ -208,6 +208,10 @@ BIND THE BUFFER OBJECT
    sphereVerticesNor = testSphere.GetVerData(verCount);
    sphereIndices = testSphere.GetTriData(triCount);
    
+   //Create VAO and VBO
+   glGenVertexArrays(1, &vao[SPHERE]);
+   glGenBuffers(1, &buffer[SPHERE_VERTICES]);
+   
    //Binding VAO 
    glBindVertexArray(vao[SPHERE]);
    //Binding VBO
