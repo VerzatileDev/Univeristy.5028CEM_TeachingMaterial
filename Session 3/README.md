@@ -379,7 +379,7 @@ Final result should look like this. You can reference to "CreateSphere_finish.cp
 * Step 1: Add a global variable for Z Co-ordinates of the ball 
 
 ```C++
-static float zVal = 0; // Z Co-ordinates of the ball.
+float zVal = 0; // Z Co-ordinates of the ball.
 ```
 
 * Step 2: Add modelview matrix before draw the sphere
@@ -423,7 +423,7 @@ glutIdleFunc(animate); has been added into main function, which enables animatio
 * Step 1: Add camera position global variable
 
 ```C++
-static float d = 0.0; //Camera position
+float d = 0.0; //Camera position
 ```
 
 * Step 2: Insert position into modelview matrix
