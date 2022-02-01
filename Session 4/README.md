@@ -215,6 +215,7 @@ Header file
 ```C++
 #pragma once
 
+#include <map>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <glm/glm.hpp>
@@ -223,24 +224,31 @@ Header file
 class GameObject
 {
 protected:
+    //physics stuff here
+	PhysicsBody* physicsBody;
+	SphereCollider* collider;
+
 	
 public:
 	GameObject();
 	GameObject(glm::vec3 pos);
 	~GameObject();
 
+    //3D position of the object
 	glm::vec3 position;
 	
-	//link to your Sphere collider
-	SphereCollider* collider;
+    //Get sphere collider 
 	SphereCollider* GetCollider();
-	void AttachCollider(SphereCollider* attachingCollider);
 
     //OpenGL drawing function
-	virtual void Draw() = 0;
+	virtual void Draw(int modelMatLoc) = 0;
 	
 	///physics update function
 	virtual void Update(float);
+	
+	//keyboard input
+	static std::map<char, bool> keys;
+	static std::map<char, bool> specialKeys;
 };
 
 ```
@@ -249,6 +257,9 @@ C++ file
 
 ```C++
 #include "GameObject.h"
+
+std::map<char, bool> GameObject::keys;
+std::map<char, bool> GameObject::specialKeys;
 
 GameObject::GameObject()
 {
@@ -266,11 +277,6 @@ GameObject::~GameObject()
 SphereCollider* GameObject::GetCollider()
 {
 	return collider;
-}
-
-void GameObject::AttachCollider(SphereCollider* attachingCollider)
-{
-	collider = attachingCollider;
 }
 
 void GameObject::Update(float deltaTime)
