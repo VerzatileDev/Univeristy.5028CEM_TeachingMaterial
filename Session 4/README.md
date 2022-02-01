@@ -380,11 +380,31 @@ void Model::Update(float deltaTime, glm::vec3 offset)
 
 Finally, there is some examples for intergating codes into the main.cpp program
 
-Header file 
-
+Object definition codes 
 
 ```C++
+static Model MyModel;
 ```
+
+Setup codes in setup function
+```C++
+   //Create VAO and VBO
+   glGenVertexArrays(1, &vao[MYMODEL]);
+   glGenBuffers(1, &buffer[MYMODEL_VERTICES]);
+
+   //Binding VAO and VBO
+   MyModel.SetIDs(vao[MYMODEL], buffer[MYMODEL_VERTICES], buffer[MYMODEL_INDICES]);
+   MyModel.Setup();
+```
+
+Drawing codes in drawScene(void) function
+```C++
+   // Draw Model
+   MyModel.updateModelMatrix(modelViewMatLoc, d); // d is used to move the camera
+   glUniform1ui(objectLoc, MYMODEL);  //if (object == MYMODEL)
+   MyModel.Draw();
+```
+
 
 ## Homework
 
