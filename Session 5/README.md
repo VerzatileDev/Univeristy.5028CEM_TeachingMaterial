@@ -340,7 +340,8 @@ You need binding hover object and draw it. You could use following parameter for
 
 ```C++
    // Draw Hover
-   Hover.updateModelMatrix(modelViewMatLoc, d, 1.5f, 0.0f);
+   pos = vec3(0.0, 00.0, 0.0f);
+   Hover.updateModelMatrix(modelViewMatLoc, d, 1.5f, pos);
    glUniform1ui(objectLoc, HOVER);  //if (object == HOVER)
    Hover.Draw();
 ```
