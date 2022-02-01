@@ -371,9 +371,11 @@ Final result
 The specular lighting effects can be calculated in the fragmentShader. The codes are
 
 ```C++
+in vec3 modelExport;
 in vec3 eyeExport;
 
 vec3 eyeDirection;
+vec3 halfway;
 vec4 fAndBSpec;
 
     eyeDirection = normalize(eyeExport - modelExport);
