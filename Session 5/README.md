@@ -239,7 +239,7 @@ static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES
    vao[4], ///add one more object
 ```
 
-* Add Model instance definition
+* Add Model instance definition (download myTable.obj from github)
 
 ```C++
 static Model Track("track.obj");
