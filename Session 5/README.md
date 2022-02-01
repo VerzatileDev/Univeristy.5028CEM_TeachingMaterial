@@ -252,7 +252,7 @@ static Model MyModel("myTable.obj");
    glGenBuffers(1, &buffer[MYMODEL_VERTICES]);
 ```
 
-* Binding TRACK VAO and VBO in setup function
+* Binding Model VAO and VBO in setup function
 
 ```C++
    //Binding Track VAO and VBO
@@ -260,7 +260,7 @@ static Model MyModel("myTable.obj");
    MyModel.Setup();
 ```
 
-* Add drawing codes for the TRACK in drawScene function, add it after draw sphere
+* Add drawing codes for the Model in drawScene function, add it after draw sphere
 
 ```C++
    // Draw my Model
