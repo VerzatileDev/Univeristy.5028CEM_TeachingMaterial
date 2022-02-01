@@ -386,7 +386,9 @@ Here eyeExport is coming from the vertex shader
 uniform vec3 eyePos;
 
 out vec3 eyeExport;
+out vec3 modelExport;
 
+modelExport = vec3(modelViewMat * vec4(objCoords, 1.0f));
 eyeExport = eyePos;
 ```
 
