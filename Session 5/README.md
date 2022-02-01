@@ -5,7 +5,8 @@
 2. [Create Models](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Create-Models)
 3. [Import OBJ file](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Import-OBJ-file)
 4. [Add another OBJ](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Add-another-OBJ)
-5. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Homework)
+5. [Specular Lighting](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Specular_Lighting)
+6. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%205#Homework)
 
 Welcome to Week 5! 
 
@@ -362,6 +363,35 @@ if (object == HOVER) {
 Final result
 
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%205/Readme%20Pictures/Hover.JPG)
+
+
+## Specular Lighting
+(Advanced Level)
+
+The specular lighting effects can be calculated in the fragmentShader. The codes are
+
+```C++
+in vec3 eyeExport;
+
+vec3 eyeDirection;
+vec4 fAndBSpec;
+
+    eyeDirection = normalize(eyeExport - modelExport);
+    halfway = (length(lightDirection + eyeDirection) == 0.0f) ? vec3(0.0) : (lightDirection + eyeDirection) / length(lightDirection + eyeDirection);    
+    fAndBSpec = pow(max(dot(normal, halfway), 0.0), sphereFandB.shininess) * light0.specCols * sphereFandB.specRefl;
+```
+
+Here eyeExport is coming from the vertex shader
+```C++
+uniform vec3 eyePos;
+
+out vec3 eyeExport;
+
+eyeExport = eyePos;
+```
+
+Here eyePos is coming from C++ program (normally main.cpp)
+In the drawScene() function
 
 
 ## Homework
