@@ -369,9 +369,9 @@ Final result
 
 * Add your model into scene.
 
-You should create a track 3D model in 3DS max or Blender and export it as OBJ file. Import it into your OpenGL program.
+You should create a your own 3D model in 3DS max or Blender and export it as OBJ file. Import it into your OpenGL program.
 
-You should position the center of your track model in the orgin of coordinate system in 3DS max or Blender. 
+You should position the center of your own model in the orgin of coordinate system in 3DS max or Blender. 
 That will cause less trouble to position it in your OpenGL program. Please adjust model scale it first and apply translation to position the model.
 
 
