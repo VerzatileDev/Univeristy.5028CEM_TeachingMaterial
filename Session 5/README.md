@@ -81,12 +81,11 @@ Faces are defined using lists of vertex, texture and normal indices in the forma
  
 ## Create Models
 
-Please download MakingRaceTrack3DSMax.pdf in week 5 folder. Following the tutorial to create your own racing track. 
-You also can watch youtube video embedded in the PDF and following the video tutorial.
+Please download ExportObjFileFrom3DSMax.pdf in week 5 folder. Following the tutorial to export your own model to a OBJ file in 3DSMax. 
 
 In the end, please export texture coordinates if you have applied texture to the object.
 
-You are also welcome to use Blender to create the racing track if you prefer to. 
+You are also welcome to use Blender to create your own model if you prefer to. 
 
 
 ## Import OBJ file
