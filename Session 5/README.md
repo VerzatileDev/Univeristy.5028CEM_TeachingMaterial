@@ -320,7 +320,7 @@ if (object == MYMODEL) {
    }
 ```
 
-* Finally, compile it and run it. You will see a track object with Sky texture in the scene.
+* Finally, compile it and run it. You will see an object with Sky texture in the scene.
 
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%205/Readme%20Pictures/Track.JPG)
 
