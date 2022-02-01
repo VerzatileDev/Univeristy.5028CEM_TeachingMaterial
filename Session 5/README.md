@@ -228,8 +228,8 @@ void Model::Draw()
 * Add object into VAO and VBO
 
 ```C++
-static enum object {FIELD, SKY, SPHERE,TRACK}; // VAO ids.
-static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES, TRACK_VERTICES}; // VBO ids.
+static enum object {FIELD, SKY,SPHERE, MYMODEL}; // VAO ids.
+static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES, MYMODEL_VERTICES}; // VBO ids.
 ```
 
 * change VAO and VBO array definition
@@ -242,31 +242,32 @@ static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES
 * Add Model instance definition (download myTable.obj from github)
 
 ```C++
-static Model Track("track.obj");
+static Model MyModel("myTable.obj");
 ```
 
 * Generate VAO and VBO in setup function after sphere setup codes
 
 ```C++
-   glGenVertexArrays(1, &vao[TRACK]);
-   glGenBuffers(1, &buffer[TRACK_VERTICES]);
+   glGenVertexArrays(1, &vao[MYMODEL]);
+   glGenBuffers(1, &buffer[MYMODEL_VERTICES]);
 ```
 
 * Binding TRACK VAO and VBO in setup function
 
 ```C++
    //Binding Track VAO and VBO
-   Track.SetIDs(vao[TRACK], buffer[TRACK_VERTICES], 0);
-   Track.Setup();
+   MyModel.SetIDs(vao[MYMODEL], buffer[MYMODEL_VERTICES], 0);
+   MyModel.Setup();
 ```
 
 * Add drawing codes for the TRACK in drawScene function, add it after draw sphere
 
 ```C++
-   // Draw Track
-   Track.updateModelMatrix(modelViewMatLoc, d, 0.2f,-60.0f);
-   glUniform1ui(objectLoc, TRACK);  //if (object == TRACK)
-   Track.Draw();
+   // Draw my Model
+   vec3 pos = vec3(0.0, 00.0, -60.0f);
+   MyModel.updateModelMatrix(modelViewMatLoc, d, 0.2f, pos);
+   glUniform1ui(objectLoc, MYMODEL);  //if (object == MYMODEL)
+   MyModel.Draw();
 ```
 
 ### Modify Vertex shader
@@ -276,7 +277,7 @@ Open vertexShader.glsl in MS Visual Studio.
 * Add Track object definition
 
 ```C++
-#define TRACK 3
+#define MYMODEL 3
 ```
 
 * Add import ports, please note objCoords is vec3 (NOT vec4)
@@ -288,12 +289,12 @@ layout(location=6) in vec2 objTexCoords;
 
 ```
 
-* Add codes to process Track data
+* Add codes to process model data
 
 Please note that objCoords is vec3. It need to be converted into vec4
 
 ```C++
-	if (object == TRACK)
+	if (object == MYMODEL)
     {
       coords = vec4(objCoords, 1.0f);
       normalExport = objNormals;
@@ -308,13 +309,13 @@ Open fragmentShader.glsl in MS Visual Studio.
 * Add Track object definition
 
 ```C++
-#define TRACK 3
+#define MYMODEL 3
 ```
 
 * Add Track coloring codes. For now, we just borrow Sky texture to color the track object.
 
 ```C++
-if (object == TRACK) {
+if (object == MYMODEL) {
     colorsOut = skyTexColor;
    }
 ```
