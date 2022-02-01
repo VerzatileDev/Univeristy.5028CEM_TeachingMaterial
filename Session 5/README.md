@@ -392,7 +392,10 @@ eyeExport = eyePos;
 
 Here eyePos is coming from C++ program (normally main.cpp)
 In the drawScene() function
-
+```C++
+    //Send Camera position to shader for Specular Lighting
+	glUniform3fv(glGetUniformLocation(programID, "eyePos"), 1, &camera->eye[0]);
+```
 
 ## Homework
 
