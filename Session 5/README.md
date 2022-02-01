@@ -264,7 +264,7 @@ static Model MyModel("myTable.obj");
 
 ```C++
    // Draw my Model
-   vec3 pos = vec3(0.0, 00.0, -60.0f);
+   vec3 pos = vec3(0.0, 00.0, -20.0f);
    MyModel.updateModelMatrix(modelViewMatLoc, d, 0.2f, pos);
    glUniform1ui(objectLoc, MYMODEL);  //if (object == MYMODEL)
    MyModel.Draw();
