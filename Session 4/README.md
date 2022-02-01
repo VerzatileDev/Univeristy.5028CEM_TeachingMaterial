@@ -153,6 +153,9 @@ static Vertex skyVertices[4] =
 > Add following codes in void setup(void) function (after comments "// Sky vertex data here")
 
 ```C++
+	//Create VAO and VBO
+   glGenVertexArrays(1, &vao[SKY]);
+   glGenBuffers(1, &buffer[SKY_VERTICES]);
    glBindVertexArray(vao[SKY]);
    glBindBuffer(GL_ARRAY_BUFFER, buffer[SKY_VERTICES]);
    glBufferData(GL_ARRAY_BUFFER, sizeof(skyVertices), skyVertices, GL_STATIC_DRAW);
