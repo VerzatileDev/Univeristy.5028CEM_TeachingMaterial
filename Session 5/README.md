@@ -138,7 +138,7 @@ Change constructor input parameter so it can take filename as an input parameter
 Change updateModelMatrix input parameter so it can take position and scale for individual model.
 
 ```C++
- void updateModelMatrix(unsigned int, float, float, vec3); //(MatrixLoc, camera offset,scale, Object offset Position);
+ void updateModelMatrix(unsigned int, float, float, vec3); //(MatrixLoc, camera offset,scale, Object Position);
 ```
 
 * Modify constructor  
@@ -245,17 +245,17 @@ static enum buffer {FIELD_VERTICES, SKY_VERTICES,SPHERE_VERTICES, SPHERE_INDICES
 static Model Track("track.obj");
 ```
 
-* Generate more VAO in setup function
+* Generate VAO and VBO in setup function after sphere setup codes
 
 ```C++
-glGenVertexArrays(4, vao); ///add one more object
+   glGenVertexArrays(1, &vao[TRACK]);
+   glGenBuffers(1, &buffer[TRACK_VERTICES]);
 ```
 
 * Binding TRACK VAO and VBO in setup function
 
 ```C++
    //Binding Track VAO and VBO
-   glGenBuffers(1, &buffer[TRACK_VERTICES]); ///generate one more id for VBO
    Track.SetIDs(vao[TRACK], buffer[TRACK_VERTICES], 0);
    Track.Setup();
 ```
