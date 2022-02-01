@@ -405,6 +405,8 @@ Drawing codes in drawScene(void) function
    MyModel.Draw();
 ```
 
+Your task is re-design the sphere class and let it derive from GameObject class. 
+Write codes for Setup(), updateModelMatrix() and Draw() functions.
 
 ## Homework
 
