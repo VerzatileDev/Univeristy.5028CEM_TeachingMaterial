@@ -81,7 +81,7 @@ Faces are defined using lists of vertex, texture and normal indices in the forma
  
 ## Create Models
 
-Please download ExportObjFileFrom3DSMax.pdf in week 5 folder. Following the tutorial to export your own model to a OBJ file in 3DSMax. 
+Please download ExportObjFileFrom3DSMax.pdf in week 5 folder. Following the tutorial to export your own model as a OBJ file in 3DSMax. 
 
 In the end, please export texture coordinates if you have applied texture to the object.
 
@@ -138,7 +138,7 @@ Change constructor input parameter so it can take filename as an input parameter
 Change updateModelMatrix input parameter so it can take position and scale for individual model.
 
 ```C++
- void updateModelMatrix(unsigned int, float,float,float);
+ void updateModelMatrix(unsigned int, float, float, vec3); //(MatrixLoc, camera offset,scale, Object offset Position);
 ```
 
 * Modify constructor  
@@ -179,7 +179,7 @@ void Model::Setup()
 {
    glBindVertexArray(VAO);
    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-   glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWithAll) * NumVert, VerticesData, GL_STATIC_DRAW);  ///please note the change
+   glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWithAll) * NumVert, VerticesData, GL_STATIC_DRAW);  
 
    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(VertexWithAll), (GLvoid*)offsetof(VertexWithAll, position));
    glEnableVertexAttribArray(4);
