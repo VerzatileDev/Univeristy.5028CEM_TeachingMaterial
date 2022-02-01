@@ -285,7 +285,7 @@ void GameObject::Update(float deltaTime)
 
 ```
 
-Second example is a mesh object: Mesh. You need to implement setup, draw and updateModelMatrix functions. 
+Second example is a mesh object: Model. You need to implement setup, draw and updateModelMatrix functions. 
 There will be more examples (in Base Project) in next week.
 
 Header file
@@ -301,7 +301,7 @@ Header file
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 
-class Mesh : public GameObject
+class Model : public GameObject
 {
 private:
 	VertexWtihNormal* VerticesData;  //vertices data 
@@ -314,8 +314,8 @@ private:
 	mat4 ModelMatrix;
 	
 public:
-	Mesh(glm::vec3 pos);
-	~Mesh();
+	Model(glm::vec3 pos);
+	~Model();
 
 	void SetIDs(unsigned int, unsigned int, unsigned int);
 	void updateModelMatrix(unsigned int, float);
@@ -330,9 +330,9 @@ public:
 C++ file
 
 ```C++
-#include "Mesh.h"
+#include "Model.h"
 
-Mesh::Mesh(glm::vec3 pos) : GameObject(pos)
+Model::Model(glm::vec3 pos) : GameObject(pos)
 {
 	position = pos;
 	
@@ -341,38 +341,38 @@ Mesh::Mesh(glm::vec3 pos) : GameObject(pos)
 	//collider = new SphereCollider(4, glm::vec3(position.x, position.y, position.z));
 }
 
-Mesh::~Mesh()
+Model::~Model()
 {
 }
 
-SphereCollider* Mesh::GetCollider()
+SphereCollider* Model::GetCollider()
 {
 	return collider;
 }
 
-void Mesh::SetIDs(unsigned int vao, unsigned int vbo, unsigned int ibo)
+void Model::SetIDs(unsigned int vao, unsigned int vbo, unsigned int ibo)
 {
 	VAO = vao;
 	VBO = vbo;
 	IBO = ibo;
 }
 
-void Mesh::Setup()
+void Model::Setup()
 {
 	//you need implement setup codes for OpenGL. 
 }
 
-void Mesh::updateModelMatrix(unsigned int modelViewMatLoc,float d)
+void Model::updateModelMatrix(unsigned int modelViewMatLoc,float d)
 {
 	//you need implement Update function for ModelView matrix
 }
 
-void Mesh::Draw()
+void Model::Draw()
 {
 	//you need implement drawing codes for OpenGL. 
 }
 
-void Mesh::Update(float deltaTime, glm::vec3 offset)
+void Model::Update(float deltaTime, glm::vec3 offset)
 {
 	collider->Update(deltaTime, position, offset);
 }
