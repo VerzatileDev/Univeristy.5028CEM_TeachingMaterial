@@ -473,97 +473,175 @@ Use left and right arrow keys to move the camera
 Vertex structure definition
 
 ```C++
-struct Vertex
+struct VertexWtihColor
 {
-	glm::vec4 position;
-	glm::vec4 colour;
+	glm::vec4 coords;
+	glm::vec4 colors;
 };
 ``` 
 
 Data is
 
 ```C++
-   std::vector<Vertex> vertices;
-   vertices = {
-        //front face
-       { {-1.f, 1.f, -1.f, 1.f},    {1.f, 1.f, 1.f, 1.f} },
-       { {-1.f, -1.f, -1.f, 1.f},   {1.f, 1.f, 1.f, 1.f} },
-       { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 1.f, 1.f} },
+   static VertexWtihColor CubeVertices[] = {
+    //front face
+   { {-1.f, 1.f, -1.f, 1.f},    {1.f, 1.f, 1.f, 1.f} },
+   { {-1.f, -1.f, -1.f, 1.f},   {1.f, 1.f, 1.f, 1.f} },
+   { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 1.f, 1.f} },
 
-       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 0.f, 1.f} },
-       { {1.f, -1.f, -1.f, 1.f},    {0.f, 1.f, 0.f, 1.f} },
-       { {1.f, 1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+   { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 0.f, 1.f} },
+   { {1.f, -1.f, -1.f, 1.f},    {0.f, 1.f, 0.f, 1.f} },
+   { {1.f, 1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
 
-       //left hand side face
-       { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
-       { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
-       { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 0.f, 1.f} },
+   //left hand side face
+   { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+   { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
+   { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 0.f, 1.f} },
 
-       { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
-       { {1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
-       { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 1.f, 1.f} },
+   { {1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
+   { {1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+   { {1.f, 1.f, 1.f, 1.f},      {1.f, 0.f, 1.f, 1.f} },
 
-       //right hand side face
-       { {-1.f, 1.f, -1.f, 1.f},    {0.f, 0.f, 1.f, 1.f} },
-       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 0.f, 1.f, 1.f} },
-       { {-1.f, 1.f, 1.f, 1.f},     {0.f, 0.f, 1.f, 1.f} },
+   //right hand side face
+   { {-1.f, 1.f, -1.f, 1.f},    {0.f, 0.f, 1.f, 1.f} },
+   { {-1.f, -1.f, -1.f, 1.f},   {0.f, 0.f, 1.f, 1.f} },
+   { {-1.f, 1.f, 1.f, 1.f},     {0.f, 0.f, 1.f, 1.f} },
 
-       { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 1.f, 1.f} },
-       { {-1.f, -1.f, 1.f, 1.f},    {0.f, 1.f, 1.f, 1.f} },
-       { {-1.f, 1.f, 1.f, 1.f},     {0.f, 1.f, 1.f, 1.f} },
+   { {-1.f, -1.f, -1.f, 1.f},   {0.f, 1.f, 1.f, 1.f} },
+   { {-1.f, -1.f, 1.f, 1.f},    {0.f, 1.f, 1.f, 1.f} },
+   { {-1.f, 1.f, 1.f, 1.f},     {0.f, 1.f, 1.f, 1.f} },
 
-       //back face
-       { {-1.f, 1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
-       { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
-       { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+   //back face
+   { {-1.f, 1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
+   { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
+   { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
 
-       { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
-       { {1.f, -1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
-       { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+   { {-1.f, -1.f, 1.f, 1.f},   {1.f, 1.f, 0.f, 1.f} },
+   { {1.f, -1.f, 1.f, 1.f},    {1.f, 1.f, 0.f, 1.f} },
+   { {1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
 
-       //top face
-       { {-1.f, 1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
-       { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
-       { {-1.f, 1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+   //top face
+   { {-1.f, 1.f, -1.f, 1.f},    {1.f, 0.f, 1.f, 1.f} },
+   { {1.f, 1.f, -1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
+   { {-1.f, 1.f, 1.f, 1.f},     {1.f, 0.f, 1.f, 1.f} },
 
-       { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
-       { {1.f, 1.f, 1.f, 1.f},      {1.f, 1.f, 0.f, 1.f} },
-       { {-1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+   { {1.f, 1.f, -1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
+   { {1.f, 1.f, 1.f, 1.f},      {1.f, 1.f, 0.f, 1.f} },
+   { {-1.f, 1.f, 1.f, 1.f},     {1.f, 1.f, 0.f, 1.f} },
 
-       //bottom face
-       { {-1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
-       { {1.f, -1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
-       { {-1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+   //bottom face
+   { {-1.f, -1.f, -1.f, 1.f},    {1.f, 0.f, 0.f, 1.f} },
+   { {1.f, -1.f, -1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
+   { {-1.f, -1.f, 1.f, 1.f},     {1.f, 0.f, 0.f, 1.f} },
 
-       { {1.f, -1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
-       { {1.f, -1.f, 1.f, 1.f},      {0.f, 1.f, 0.f, 1.f} },
-       { {-1.f, -1.f, 1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+   { {1.f, -1.f, -1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
+   { {1.f, -1.f, 1.f, 1.f},      {0.f, 1.f, 0.f, 1.f} },
+   { {-1.f, -1.f, 1.f, 1.f},     {0.f, 1.f, 0.f, 1.f} },
 
-    };
+};
 
 ```   
 
 Setup codes
 
 ```C++
-	glGenVertexArrays(1, &vao);
-    glGenBuffers(1, &vbo);
-
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)sizeof(Vertex::position));
-    glEnableVertexAttribArray(1);
+   glGenVertexArrays(1, &vao[CUBE]);
+   glGenBuffers(1, &buffer[CUBE_VERTICES]);
+   glBindVertexArray(vao[CUBE]);
+   glBindBuffer(GL_ARRAY_BUFFER, buffer[CUBE_VERTICES]);
+   glBufferData(GL_ARRAY_BUFFER, sizeof(CubeVertices), CubeVertices, GL_STATIC_DRAW);
+   glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(CubeVertices[0]), 0);
+   glEnableVertexAttribArray(2);
+   glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, sizeof(CubeVertices[0]), (GLvoid*)sizeof(CubeVertices[0].coords));
+   glEnableVertexAttribArray(3);
 ```
 
 Drawing codes
 
 ```C++
-    glBindVertexArray(vao);
-    glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+   //Draw Cube
+   modelViewMat = mat4(1.0);
+   modelViewMat = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0 + d, 10.0, 0.0), vec3(0.0, 1.0, 0.0)); //setup camera
+   modelViewMat = scale(modelViewMat, vec3(5.0f, 5.0f, 5.0f)); //scale the cube
+   glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat));
+   glUniform1ui(objectLoc, CUBE);
+   glBindVertexArray(vao[CUBE]);
+   glDrawArrays(GL_TRIANGLES, 0, 36);
+```
+
+VertexShader codes
+
+```C++
+#version 430 core
+
+#define FIELD 0
+#define SKY 1
+#define CUBE 2
+
+layout(location=0) in vec4 Coords;
+layout(location=1) in vec2 TexCoords;
+layout(location=2) in vec4 CubeCoords;
+layout(location=3) in vec4 CubeColors;
+
+
+uniform mat4 modelViewMat;
+uniform mat4 projMat;
+uniform uint object;
+
+out vec2 texCoordsExport;
+out vec4 ColorExport;
+
+vec4 coords;
+
+void main(void)
+{   
+   if (object == FIELD)
+   {
+      coords = Coords;
+      texCoordsExport = TexCoords;
+   }
+   if (object == SKY)
+   {
+      coords = Coords;
+      texCoordsExport = TexCoords;
+   }
+   if (object == CUBE)
+   {
+      coords = CubeCoords;
+      ColorExport = CubeColors;
+   }
+   
+   gl_Position = projMat * modelViewMat * coords;
+}
+
+```
+
+
+FragmentShader codes
+
+```C++
+#version 430 core
+
+#define FIELD 0
+#define SKY 1
+#define CUBE 2
+
+in vec2 texCoordsExport;
+in vec4 ColorExport;
+
+uniform uint object;
+
+out vec4 colorsOut;
+
+
+void main(void)
+{  
+   if (object == FIELD) colorsOut = vec4(0.0,0.0,1.0,1.0);
+   if (object == SKY) colorsOut = vec4(1.0,0.0,0.0,1.0);
+   if (object == CUBE) {
+      colorsOut =  vec4(0.0,1.0,0.0,1.0);
+   }
+}
 ```
 
 > There is tutorial. The link is  http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
