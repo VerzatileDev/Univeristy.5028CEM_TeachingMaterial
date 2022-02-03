@@ -182,9 +182,9 @@ vec3 Sphere::GetPosition(void) //get the 3D position of the sphere
 ```
 
 
----- Set up drawing routine  ----
+---- Set up OpenGL initialization and drawing routines  ----
 
-Add sphere header file
+Add sphere header file in CreateSphere.cpp (It has a main function)
 
 ```C++
 #include "sphere.h"
