@@ -88,7 +88,7 @@ Sphere::Sphere()
 	Position = vec3(0); //initialize the 3D position to (0,0,0)
 
 	sphereVerticesNor = (VertexWtihNormal *)malloc(sizeof(VertexWtihNormal) * 121); //total number of vertices = (stacks+1)*(slices +1)
-	sphereIndices = (unsigned int *)malloc(sizeof(unsigned int) * 660);
+	sphereIndices = (unsigned int *)malloc(sizeof(unsigned int) * 660); //total number of indices = (stacks*slices + slices)*6
 	CreateSpherewithNormal();
 }
 
