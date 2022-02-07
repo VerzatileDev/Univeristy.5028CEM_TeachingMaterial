@@ -477,7 +477,7 @@ glEnableVertexAttribArray(4); //corresponding to shader:  layout(location=4) in 
 
 Finally, you will get
 
-![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%204/Readme%20Pictures/Texture1.JPG)
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%204/Readme%20Pictures/Texture2.JPG)
 
 
 
