@@ -4,7 +4,7 @@
 1. [Skybox](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Skybox)
 2. [Integrate into your project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Integrate-into-your-project)
 3. [Look around camera](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Look-around-camera)
-5. [Add a Room](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Add-a-Room)
+5. [Add a Room](https://github.coventry.ac.uk/ac7020/5028CEM_TeachingMaterial/tree/master/Session%207#add-a-room)
 6. [Your own project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Your-own-project)
 
 Welcome to Week 7! 
