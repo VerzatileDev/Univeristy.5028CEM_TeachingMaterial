@@ -5,7 +5,8 @@
 2. [Add Texture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Add-Texture)
 3. [Add Sky](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Add-Sky)
 4. [Class design](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Class-design)
-5. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Homework)
+5. [Add Sphere Texture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Add-Sphere-Texture)
+6. [Homework](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%204#Homework)
 
 Welcome to Week 4! 
 
@@ -407,6 +408,78 @@ Drawing codes in drawScene(void) function
 
 Your task is re-design the sphere class and let it derive from GameObject class. 
 Write codes for Setup(), updateModelMatrix() and Draw() functions.
+
+
+## Add Sphere Texture
+(Advanced Level)
+
+It is optional. Less instructions. You need to figure out how to arrange the codes.
+Now, let us combine a sphere texture with lighting.
+
+1. Change the color of sphere material, so it does not interference with material color.
+
+```C++
+static const Material sphereFandB =
+{
+	vec4(1.0, 1.0, 1.0, 1.0),
+	vec4(1.0, 1.0, 1.0, 1.0),
+	vec4(1.0, 1.0, 1.0, 1.0),
+	vec4(0.0, 0.0, 0.0, 1.0),
+	50.0f
+};   
+```
+
+2. Change the direction of light to vertical.
+
+```C++
+static const Light light0 =
+{
+	vec4(0.0, 0.0, 0.0, 1.0),
+	vec4(1.0, 1.0, 1.0, 1.0),
+	vec4(1.0, 1.0, 1.0, 1.0),
+	vec4(0.0, 1.0, 0.0, 0.0)
+};  
+```
+
+3. Change vertex definition to include texture coordinates (vertex.h).
+
+```C++
+struct VertexWtihAll
+{
+	glm::vec4 coords;
+	glm::vec3 normals;
+	glm::vec2 texCoords;
+}; 
+```
+
+4. In sphere.cpp, change vertex definition to VertexWtihAll. Add codes for texture coorindate calculation (CreateSpherewithNormal(void)).
+
+```C++
+			sphereVerticesNor[count].coords = vec4(x * radius, y * radius + 6.0, z * radius, 1.0);
+			sphereVerticesNor[count].normals = vec3(x, y, z); ///Sphere normals
+			sphereVerticesNor[count].texCoords = vec2(U, V);  //Texture coordinates
+```
+
+5. In Vertex shader, you need adding an additional layout to receive texture cooridinates.
+
+6. In main program, add codes to send texture coordinates.
+
+```C++
+glVertexAttribPointer(4, 2, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), (GLvoid*)(sizeof(sphereVerticesNor[0].coords)+sizeof(sphereVerticesNor[0].normals)));
+glEnableVertexAttribArray(4); //corresponding to shader:  layout(location=4) in vec2 sphereTexCoords; 
+```
+
+7. Add output variable in Vertex shader and input variable in fragment shader for texture cooridnates.
+
+8. Download sphere.jpg from github or use your own sphere texture map. Inserting texture initialization codes in main program. Send it to the shader.
+
+9. Add texture color processing codes in fragment. Combine them with lighting color
+
+Finally, you will get
+
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%204/Readme%20Pictures/Texture1.JPG)
+
+
 
 ## Homework
 
