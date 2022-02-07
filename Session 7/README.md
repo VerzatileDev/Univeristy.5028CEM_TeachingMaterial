@@ -4,7 +4,8 @@
 1. [Skybox](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Skybox)
 2. [Integrate into your project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Integrate-into-your-project)
 3. [Look around camera](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Look-around-camera)
-4. [Your own project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Your-own-project)
+5. [Add a Room](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Add-a-Room)
+6. [Your own project](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/tree/master/Session%207#Your-own-project)
 
 Welcome to Week 7! 
 
@@ -496,13 +497,18 @@ void KeyInputCallback(unsigned char key, int x, int y)
 }
 ```
 
+## Add a Room
+
+This is only for the coursework of developing the pool game.
+
+
 ## Your own project
 
 Now, you should be able to work on your own project 
 
 For example, 
 
-* Add skybox into your project (optional)
+* Add skybox into your project (optional), if your game requires an outdoor environment.
 
 * Add look around camera into your project. You have to modify the model class to allow input modelview matrix from camera setup.
 change void Model::updateModelMatrix(unsigned int modelViewMatLoc,float d,float scale,float ZPos) function (both input parameters and codes)
