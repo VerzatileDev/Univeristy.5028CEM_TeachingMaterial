@@ -175,7 +175,7 @@ You can pass a variable to shader to change the position of an object (instead o
 * Add
 
 ```C++
-static float yVal = 0; // Y Co-ordinates of the track. 
+static float yVal = 0; // Y Co-ordinates of the myModel. 
 ```
 
 * Change yVale in animation function
@@ -222,10 +222,10 @@ Add
 uniform float yPos;
 ```
 
-* Add track position update codes
+* Add myModel position update codes
 
 ```C++
-    if (object == TRACK)
+    if (object == MYMODEL)
     {
       coords = vec4(objCoords, 1.0f);
       coords.y = coords.y+yPos; //added
