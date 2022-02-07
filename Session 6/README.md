@@ -243,7 +243,7 @@ Now, you should be able to work on your own model
 
 For example, 
 
-* you can create a car model in 3DS max with normal vectors and texture coordinates.
+* you can create models in 3DS max with normal vectors and texture coordinates.
 
 * Import it into your own project
 
