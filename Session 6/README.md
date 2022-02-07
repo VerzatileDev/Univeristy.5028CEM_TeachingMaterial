@@ -116,7 +116,7 @@ We only need multiple texture color with diffuse color in fragment shader
 
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%206/Readme%20Pictures/TextureLight.JPG)
 
-You might want to use the original color of texture map instead of using combination material colors and texture map colors.
+You might want to use the original color of texture map instead of using combination of the material colors and the texture map colors.
 So, you set material colors to white by changing them to
 
 ```C++
