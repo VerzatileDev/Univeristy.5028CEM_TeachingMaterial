@@ -643,7 +643,7 @@ void main(void)
 }
 ```
 
-> There is tutorial. The link is  http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
+
 
 
 
