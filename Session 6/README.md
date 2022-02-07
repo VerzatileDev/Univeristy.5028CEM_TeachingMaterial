@@ -175,7 +175,7 @@ You can pass a variable to shader to change the position of an object (instead o
 * Add
 
 ```C++
-static float yVal = 0; // Y Co-ordinates of the myModel. 
+float yVal = 0; // Y Co-ordinates of the myModel. 
 ```
 
 * Change yVale in animation function
