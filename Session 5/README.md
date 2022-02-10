@@ -142,9 +142,9 @@ Change updateModelMatrix input parameter so it can take position and scale for i
  void updateModelMatrix(unsigned int, float, float, vec3); //(MatrixLoc, camera offset,scale, Object Position);
 ```
 
-* Modify constructor  
+* Modify constructor (in Model.cpp)
 
-Change constructor to following codes (allow it take input filename
+Change constructor to following codes (allow it take input filename)
 
 ```C++
 Model::Model(const char* name)
