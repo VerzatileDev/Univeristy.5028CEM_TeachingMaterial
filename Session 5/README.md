@@ -195,15 +195,16 @@ void Model::Setup()
 
 * Complete updateModelMatrix function (in Model.cpp).
 
-So, it takes scale and Z position parameter. But you add more or remove parameters to make it subitable for your class.
+So, it takes scale and model position parameter. But you add more or remove parameters to make it subitable for your class.
 
 ```C++
-void Model::updateModelMatrix(unsigned int modelViewMatLoc,float d,float scale,float ZPos)
+void Model::updateModelMatrix(unsigned int modelViewMatLoc, float d, float scale, vec3 offsetPos)
 {
 	ModelMatrix = mat4(1.0);
 	ModelMatrix = lookAt(vec3(0.0, 10.0, 15.0), vec3(0.0 + d, 10.0, 0.0), vec3(0.0, 1.0, 0.0)); //camera matrix, apply first
 	ModelMatrix = glm::scale(ModelMatrix, vec3(scale, scale, scale));  //scale down the model
-	ModelMatrix = glm::translate(ModelMatrix, vec3(0.0f, 0.0f, ZPos));
+	ModelMatrix = glm::translate(ModelMatrix, offsetPos);
+	ModelMatrix = glm::translate(ModelMatrix, GetPosition());
 	glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(ModelMatrix));  //send modelview matrix to the shader
 }
 ```
