@@ -136,8 +136,7 @@ void Skybox::Draw()
 
 ## Integrate into your project
 
-### This task is for racing game only. If you are developing a pool game, please go to next section (Look around camera).
-This is an optional task.
+### This is an optional task. If you are developing a pool game, you might use the skybox as the room (please change the texture images).
 The Skybox can not directly into your project (not just a copy-paste job!). The Skybox example project uses a stand-alone shader architecture.
 
 There are two ways you can make the skybox working in your project. One is convert your model class (or any other drawing classes) into stand-alone shader architecture.
@@ -499,15 +498,16 @@ void KeyInputCallback(unsigned char key, int x, int y)
 ```
 
 ## Add a Room
-
-This is only for the coursework of developing a pool game. There are two ways to add a room into the scene.
+### This is only for the coursework of developing a pool game.
+(1)There are three ways to add a room into the scene.
 Create a room (basically just a textured cube) in 3DS Max or blender. Then loading it into the OpenGL game.
 Make sure room is big enough to accommodate the pool table and small enough to fit within the viewing frustum defined by the projection matrix.
 Make sure the camera is inside the room. The repeatable texture such as wood is a good choice.
 
-Another way is to create a OpenGL cube from scratch. There is a tutorial in week 3. But you need to modify the vertex data to include the texture coordinates.
+(2)Another way is to create a OpenGL cube from scratch. There is a tutorial in week 3. But you need to modify the vertex data to include the texture coordinates.
 You can use repeatable texture such as wood to decorate the room. 
 
+(3) Use the Skybox tutorial to create a room and replace skybox texture images with some wood texture images.
 
 ## Your own project
 
