@@ -93,9 +93,64 @@ Here gl_InstanceID is a built-in variable inside shader which represent the id o
 We, move the x coordinate by (gl_InstanceID*12 - 18) for each instance.
 
 
-* Finally it should look like this (Always to Compile option to "x64" )
+* Finally it should look like this
 
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/Instance.JPG)
+
+### Assign different color to individual instance
+
+All can be done in shaders.
+First add InstanceID variable into both shaders.
+
+In Vertex shader, add 
+```C++
+flat out int InstanceID; //output InstanceID variable to fragment shader
+```
+
+Then change codes so that InstanceID is assigned by  gl_InstanceID
+```C++
+   if (object == SPHERE)
+   {
+      InstanceID = gl_InstanceID;
+      coords = vec4(sphereCoords.x+(gl_InstanceID*12 - 18),sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      normalExport = sphereNormals;
+   }
+```
+
+In fragment shader, add 
+```C++
+flat in int InstanceID; 
+```
+
+Then assign difference color to the sphere according to the InstanceID
+```C++
+	if (object == SPHERE) {
+   		normal = normalize(normalExport);
+		lightDirection = normalize(vec3(light0.coords));
+	    if(InstanceID==0)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(1.0,0.0,0.0,1.0); //red color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0);
+		}
+		if(InstanceID==1)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(0.0,1.0,0.0,1.0); //green color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0);
+		}
+		if(InstanceID==2)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(0.0,0.0,1.0,1.0); //blue color 
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0);
+		}
+		if(InstanceID==3)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); //original color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0);
+		}
+
+   }
+```
+
 
 ### Add instancing into your own project
 
