@@ -49,7 +49,7 @@ These instanced versions of the classic rendering functions take an extra parame
 
 ### Implementation
 
-* Download the base project (SphereInstance.zip). Open SphereInstance.cpp
+* Download the base project (SphereInstance.zip). Open Sphere.cpp
 
 We just need to modify the drawing function to draw 4 spheres instead one.
 
@@ -62,7 +62,7 @@ glDrawElements(GL_TRIANGLE_STRIP, triCount, GL_UNSIGNED_INT, sphereIndices);
 with 
 
 ```C++
-glDrawElementsInstanced(GL_TRIANGLE_STRIP, 660, GL_UNSIGNED_INT, sphereIndices, 4);
+glDrawElementsInstanced(GL_TRIANGLE_STRIP, triCount, GL_UNSIGNED_INT, sphereIndices, 4);
 ```
 
 
@@ -84,13 +84,13 @@ with
 ```C++
    if (object == SPHERE)
    {
-      coords = vec4(sphereCoords.x+gl_InstanceID*4,sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      coords = vec4(sphereCoords.x+(gl_InstanceID*12 - 18),sphereCoords.y,sphereCoords.z,sphereCoords.w);
       normalExport = sphereNormals;
    }
 ```
 
 Here gl_InstanceID is a built-in variable inside shader which represent the id of instance object. So, it is range from 0 to 3. 
-We, move the x coordinate by gl_InstanceID*4 for each instance.
+We, move the x coordinate by (gl_InstanceID*12 - 18) for each instance.
 
 
 * Finally it should look like this (Always to Compile option to "x64" )
