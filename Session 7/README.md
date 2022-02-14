@@ -136,6 +136,7 @@ void Skybox::Draw()
 
 ## Integrate into your project
 
+### This task is for racing game only. If you are developing a pool game, please go to next section (Look around camera).
 This is an optional task.
 The Skybox can not directly into your project (not just a copy-paste job!). The Skybox example project uses a stand-alone shader architecture.
 
