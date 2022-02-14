@@ -303,7 +303,7 @@ Delete rest of functions inside Skybox class.
 For vertex shader, first define SKYBOX object and add import and output data. additional codes 
 
 ```C++
-#define SKYBOX 2
+#define SKYBOX 1
 
 layout(location=0) in vec3 skyCoords;
 
@@ -324,7 +324,7 @@ Add coordinate codes
 For Fragment shader, first define SKYBOX object and add import data. additional codes 
 
 ```C++
-#define SKYBOX 2
+#define SKYBOX 1
 
 in vec3 SkytexCoordsExport;
 
