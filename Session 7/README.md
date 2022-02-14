@@ -500,6 +500,7 @@ void KeyInputCallback(unsigned char key, int x, int y)
 ## Add a Room
 ### This is only for the coursework of developing a pool game.
 There are three ways to add a room into the scene.
+
 (1)Create a room (basically just a textured cube) in 3DS Max or blender. Then loading it into the OpenGL game.
 Make sure room is big enough to accommodate the pool table and small enough to fit within the viewing frustum defined by the projection matrix.
 Make sure the camera is inside the room. The repeatable texture such as wood is a good choice.
