@@ -45,14 +45,14 @@ Texture target	Orientation
 
 Like many of OpenGL's enums, their behind-the-scenes int value is linearly incremented, 
 so if we were to have an array or vector of texture locations we could loop over them by starting with GL_TEXTURE_CUBE_MAP_POSITIVE_X and
- incrementing the enum by 1 each iteration, effectively looping through all the texture targets:
+ incrementing the enum by 1 each iteration, effectively looping through all the texture targets (following source codes are for demo only, no need to be added into the project):
 
 ```C++
 for (unsigned int i = 0; i < 6; i++)
  glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data); 
 ```
 
-Because a cubemap is a texture like any other texture, we will also specify its wrapping and filtering methods
+Because a cubemap is a texture like any other texture, we will also specify its wrapping and filtering methods (following source codes are for demo only, no need to be added into the project)
 
 ```C++
 glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
