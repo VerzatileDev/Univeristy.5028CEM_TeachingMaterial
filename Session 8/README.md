@@ -155,6 +155,10 @@ Then assign difference color to the sphere according to the InstanceID
 
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/InstanceColor.JPG)
 
+### Assign different texture to individual instance
+
+Use the same idea to assign different texture to individual instance. Please refer week 4 tutorial for sphere texture.
+
 ### Add instancing into your own project
 
 * Select a decorated object in your scene such as a rock object. Modify the drawing codes.
