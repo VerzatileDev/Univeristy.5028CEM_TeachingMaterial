@@ -49,9 +49,9 @@ These instanced versions of the classic rendering functions take an extra parame
 
 ### Implementation
 
-* Download the base project (CreateSphereClass.zip). Always to Compile option to "x64".  Open CreateSphere.cpp
+* Download the base project (SphereInstance.zip). Open SphereInstance.cpp
 
-We just need to modify the drawing function to draw 10 spheres instead one.
+We just need to modify the drawing function to draw 4 spheres instead one.
 
 Replace
 
@@ -62,13 +62,13 @@ glDrawElements(GL_TRIANGLE_STRIP, triCount, GL_UNSIGNED_INT, sphereIndices);
 with 
 
 ```C++
-glDrawElementsInstanced(GL_TRIANGLE_STRIP, 660, GL_UNSIGNED_INT, sphereIndices, 10);
+glDrawElementsInstanced(GL_TRIANGLE_STRIP, 660, GL_UNSIGNED_INT, sphereIndices, 4);
 ```
 
 
-* Modify Vertex shader codes so that we can see 10 sphere.
+* Modify Vertex shader codes so that we can see 4 sphere.
 
-Now, all 10 sphere is in the same position. So, you do not see any difference at all. Modify position  
+Now, all 4 sphere is in the same position. So, you do not see any difference at all. Modify position  
 
 Replace
 ```C++
@@ -84,13 +84,13 @@ with
 ```C++
    if (object == SPHERE)
    {
-      coords = vec4(sphereCoords.x+gl_InstanceID*3,sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      coords = vec4(sphereCoords.x+gl_InstanceID*4,sphereCoords.y,sphereCoords.z,sphereCoords.w);
       normalExport = sphereNormals;
    }
 ```
 
-Here gl_InstanceID is a built-in variable inside shader which represent the id of instance object. So, it is range from 0 to 9. 
-We, move the x coordinate by gl_InstanceID*3 for each instance.
+Here gl_InstanceID is a built-in variable inside shader which represent the id of instance object. So, it is range from 0 to 3. 
+We, move the x coordinate by gl_InstanceID*4 for each instance.
 
 
 * Finally it should look like this (Always to Compile option to "x64" )
