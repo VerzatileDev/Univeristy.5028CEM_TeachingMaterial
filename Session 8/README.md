@@ -100,9 +100,9 @@ We, move the x coordinate by (gl_InstanceID*12 - 18) for each instance.
 ### Assign different color to individual instance
 
 All can be done in shaders.
-First add InstanceID variable into both shaders.
+First add InstanceID variable into the vertex shader.
 
-In Vertex shader, add 
+In vertex shader, add 
 ```C++
 flat out int InstanceID; //output InstanceID variable to fragment shader
 ```
@@ -151,6 +151,9 @@ Then assign difference color to the sphere according to the InstanceID
    }
 ```
 
+* Finally it should look like this
+
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/InstanceColor.JPG)
 
 ### Add instancing into your own project
 
