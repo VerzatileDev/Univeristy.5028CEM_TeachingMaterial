@@ -333,14 +333,13 @@ static Vertex treeVertices[4] =
 ```C++
    buffer[5], ///add one more object
    vao[4], ///add one more object
-   
-   glGenVertexArrays(4, vao); ///add one more object
-   glGenBuffers(3, buffer);  ///add one more object
 ```
 
-* Create ID for VBO
+* Create ID for VAO and VBO
 
 ```C++
+   //Create VAO and VBO
+   glGenVertexArrays(1, &vao[TREE]);
    glGenBuffers(1, &buffer[TREE_VERTICES]);
 ```
 
