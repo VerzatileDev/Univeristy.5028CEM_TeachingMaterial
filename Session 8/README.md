@@ -193,7 +193,7 @@ Then add additional codes in vetex shader to export texture coordinates to fragm
    }
 ```
 
-Then add texture importing codes in main program. There are two additional images (sphere.jpg and earth.jpg) in the texture folder of the base project
+Then add texture importing codes in main program. There are two additional images (sphere.jpg and earth.jpg) in the texture folder of the base project. 
 Do not forget to enlarge texture[2] to texture[4]. 
 
 ```C++
@@ -224,6 +224,21 @@ Do not forget to enlarge texture[2] to texture[4].
    glGenerateMipmap(GL_TEXTURE_2D);
    sphereTexLoc = glGetUniformLocation(programId, "sphereTex");
    glUniform1i(sphereTexLoc, 2); //send texture to shader
+   
+   glActiveTexture(GL_TEXTURE3);
+   glBindTexture(GL_TEXTURE_2D, texture[3]);
+
+   data = SOIL_load_image(TexNames[3].c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
+   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+   SOIL_free_image_data(data);
+
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+   glGenerateMipmap(GL_TEXTURE_2D);
+   earthTexLoc = glGetUniformLocation(programId, "earthTex");
+   glUniform1i(earthTexLoc, 3); //send texture to shader
 ```
 
 ### Add instancing into your own project
