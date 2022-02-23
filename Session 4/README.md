@@ -444,7 +444,7 @@ static const Light light0 =
 3. Change vertex definition to include texture coordinates (vertex.h).
 
 ```C++
-struct VertexWtihAll
+struct VertexWithAll
 {
 	glm::vec4 coords;
 	glm::vec3 normals;
