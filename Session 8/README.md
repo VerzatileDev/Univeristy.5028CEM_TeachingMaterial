@@ -157,7 +157,74 @@ Then assign difference color to the sphere according to the InstanceID
 
 ### Assign different texture to individual instance
 
-Use the same idea to assign different texture to individual instance. Please refer week 4 tutorial for sphere texture.
+Use the same idea to assign different texture to individual instance. Please refer week 4 tutorial for adding texture coordinates into your sphere class.
+Specially, you need to re-dsign your setup function in sphere class
+
+```C++
+void Sphere::Setup()
+{
+	int verCount = 121;
+	int triCount = 660;
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexWithAll) * verCount, sphereVerticesNor, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * triCount, sphereIndices, GL_STATIC_DRAW);
+	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), 0);
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), (GLvoid*)offsetof(VertexWithAll, normals));
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(sphereVerticesNor[0]), (GLvoid*)offsetof(VertexWithAll, texCoords));
+	glEnableVertexAttribArray(1);
+}
+```
+
+Make sure sphere has coordinates, normals and texture coordinates.
+
+Then add additional codes in vetex shader to export texture coordinates to fragment shader. In this case, we re-use TexCoords layout to receive data.
+
+```C++
+   if (object == SPHERE)
+   {
+      InstanceID = gl_InstanceID;
+      coords = vec4(sphereCoords.x+(gl_InstanceID*12 - 18),sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      normalExport = sphereNormals;
+      texCoordsExport = TexCoords;
+   }
+```
+
+Then add texture importing codes in main program. There are two additional images (sphere.jpg and earth.jpg) in the texture folder of the base project
+Do not forget to enlarge texture[2] to texture[4]. 
+
+```C++
+  // Load the images.
+   std::string TexNames[] = {
+		"Textures/grass.bmp",
+		"Textures/sky.bmp",
+		"Textures/sphere.jpg",
+		"Textures/earth.jpg",
+   };
+
+   // Create texture ids.
+   glGenTextures(4, texture);
+```
+
+```C++
+   glActiveTexture(GL_TEXTURE2);
+   glBindTexture(GL_TEXTURE_2D, texture[2]);
+
+   data = SOIL_load_image(TexNames[2].c_str(), &width, &height, 0, SOIL_LOAD_RGBA);
+   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+   SOIL_free_image_data(data);
+
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+   glGenerateMipmap(GL_TEXTURE_2D);
+   sphereTexLoc = glGetUniformLocation(programId, "sphereTex");
+   glUniform1i(sphereTexLoc, 2); //send texture to shader
+```
 
 ### Add instancing into your own project
 
