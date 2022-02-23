@@ -157,6 +157,8 @@ Then assign difference color to the sphere according to the InstanceID
 
 ### Assign different texture to individual instance
 
+This is the advanced level and it is optional.
+
 Use the same idea to assign different texture to individual instance. Please refer week 4 tutorial for adding texture coordinates into your sphere class.
 Specially, you need to re-dsign your setup function in sphere class
 
@@ -241,9 +243,52 @@ Do not forget to enlarge texture[2] to texture[4].
    glUniform1i(earthTexLoc, 3); //send texture to shader
 ```
 
+Finally, add codes into fragment shader to handling texture map for spheres.
+
+```C++
+uniform sampler2D sphereTex;
+uniform sampler2D earthTex;
+vec4 sphereTexColor,earthTexColor;
+```
+
+Inside the main function of fragment shader
+```C++
+   sphereTexColor = texture(sphereTex, texCoordsExport);
+   earthTexColor = texture(earthTex, texCoordsExport);
+   
+   if (object == SPHERE) {
+   		normal = normalize(normalExport);
+		lightDirection = normalize(vec3(light0.coords));
+	    if(InstanceID==0)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(1.0,0.0,0.0,1.0); //red color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0)*sphereTexColor;
+		}
+		if(InstanceID==1)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(0.0,1.0,0.0,1.0); //green color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0)*sphereTexColor;
+		}
+		if(InstanceID==2)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * vec4(0.0,0.0,1.0,1.0); //blue color 
+		  colorsOut = earthTexColor;
+		}
+		if(InstanceID==3)
+	    {
+		  fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); //original color
+		  colorsOut =  vec4(vec3(min(fAndBDif, vec4(1.0))), 1.0)*sphereTexColor;
+		}
+   }
+```
+
+The final results look like
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/Instance.JPG)
+
+
 ### Add instancing into your own project
 
-* Select a decorated object in your scene such as a rock object. Modify the drawing codes.
+* Select a decorated object in your scene such as a rock or ball object. Modify the drawing codes.
 
 * In the vertex shader, change their position. Ideally, along certain pattern such as line, circle and etc.
 
