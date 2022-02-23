@@ -283,7 +283,7 @@ Inside the main function of fragment shader
 ```
 
 The final results look like
-![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/Instance.JPG)
+![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/InstanceTex.JPG)
 
 
 ### Add instancing into your own project
