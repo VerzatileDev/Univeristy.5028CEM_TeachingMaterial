@@ -285,6 +285,53 @@ Inside the main function of fragment shader
 The final results look like
 ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%208/Readme%20Pictures/InstanceTex.JPG)
 
+### Assign different position to individual instance
+
+In the previous example, we modify coordinates of spheres in vertex shader to move all instances of sphere into different position.
+In this section, we will use the position data from sphere class to move the ball around the scene so that you can apply physics forces to individual ball.
+To do that, first we create position array in the sphere class (sphere.h)
+Add following codes in sphere.h (assume we have 16 balls)
+
+```C++
+public:
+	float PosX[16]; //X of ball position
+	float PosY[16]; //Y of ball position
+```
+
+Then initialize the ball position in setup() function in main program
+```C++
+   for (int i = 0; i < 16; i++)
+   {
+	   testSphere.PosX[i] = i * 12.0 - 18.0;
+   }
+```
+
+Then in the drawscene function, send position data to the vertex shader. glUniform1fv can send an array of float to the vertex shader.
+```C++
+   // Draw sphere
+   glUniform1fv(glGetUniformLocation(programId, "PosX"), 16, testSphere.PosX);
+   testSphere.updateModelMatrix(modelViewMatLoc, d);
+   glUniform1ui(objectLoc, SPHERE);  //if (object == SPHERE)
+   testSphere.Draw();
+```
+
+In vertex shader, we define the position data first.
+```C++
+uniform float PosX[16];
+```
+
+Then in the main function (vertex shader). Use PosX to move each instance into diferent position
+```C++
+if (object == SPHERE)
+   {
+      InstanceID = gl_InstanceID;
+      //coords = vec4(sphereCoords.x+(gl_InstanceID*12 - 18),sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      coords = vec4(sphereCoords.x+PosX[gl_InstanceID],sphereCoords.y,sphereCoords.z,sphereCoords.w);
+      normalExport = sphereNormals;
+      texCoordsExport = TexCoords;
+   }
+```
+
 
 ### Add instancing into your own project
 
