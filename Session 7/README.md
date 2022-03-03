@@ -352,6 +352,7 @@ Make your viewing frustum is big enough to accommodate the Skybox. So, place you
 Replace skybox initialization codes in setup function wth
 
 ```C++
+   glGenVertexArrays(1, &vao[SKYBOX]);
    glGenBuffers(1, &buffer[SKYBOX_VERTICES]);
    skybox.InitialiseSkybox(vao[SKYBOX], buffer[SKYBOX_VERTICES]);
    skybox.InitialiseCubeMap(programId, texture[3]);
