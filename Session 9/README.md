@@ -152,6 +152,17 @@ void animate()
 }
 ```
 
+* replace the camera setup with eye and center vector in draw functions
+
+```C++
+   // Calculate and update modelview matrix.
+   modelViewMat = mat4(1.0);
+   modelViewMat = lookAt(eye, cen, vec3(0.0, 1.0, 0.0));
+   glUniformMatrix4fv(modelViewMatLoc, 1, GL_FALSE, value_ptr(modelViewMat)); 
+
+   // Draw field 
+```
+
 * compile and take a look
 
  ![Tex1 picture](https://github.coventry.ac.uk/ac7020/212CR_TeachingMaterial/blob/master/Session%209/Readme%20Pictures/Camera1.JPG)
