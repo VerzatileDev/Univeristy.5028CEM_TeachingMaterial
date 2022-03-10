@@ -27,19 +27,22 @@ then we’ll use the brightest tone. As the angle between the normal and the lig
 we will do the toon shader effect per fragment. Therefore, we only need to modify the fragment shader.
 
 Modify the color calculation codes based on the intensity value which is calculated as dot product between the light vector and the normal vector.
+Do not forget to define the intensity variable before the main function in the fragment shader.
 
 ```C++
    if (object == SPHERE) {
     normal = normalize(normalExport);
 	lightDirection = normalize(vec3(light0.coords));
-    intensity = dot(lightDirection,normal);
-	fAndBDif = (light0.difCols * sphereFandB.difRefl);
-    if (intensity > 0.95)
-		colorsOut =  0.95f*fAndBDif;
-	else if (intensity > 0.5)
-		colorsOut =  0.5f*fAndBDif;
-	else if (intensity > 0.25)
-		colorsOut =  0.25f*fAndBDif;
+	intensity = dot(lightDirection,normal);
+	fAndBDif = max(dot(normal, lightDirection), 0.0f) * (light0.difCols * sphereFandB.difRefl); 
+    if (intensity > 0.85)
+		colorsOut =  0.85f*fAndBDif;
+	else if (intensity > 0.6)
+		colorsOut =  0.6f*fAndBDif;
+	else if (intensity > 0.4)
+		colorsOut =  0.4f*fAndBDif;
+	else if (intensity > 0.2)
+		colorsOut =  0.2f*fAndBDif;
 	else
 		colorsOut =  0.1f*fAndBDif;
    }
